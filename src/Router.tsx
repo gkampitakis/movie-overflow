@@ -1,10 +1,12 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch } from 'react-router-dom';
+import Search from './Components/Search';
 
 export default function Router() {
   return (
     <BrowserRouter>
-      <Switch></Switch>
+      <Search />
+      <Switch>{/* <Route path="/search" component={Home} /> */}</Switch>
     </BrowserRouter>
   );
 }

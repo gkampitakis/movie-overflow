@@ -1,0 +1,105 @@
+.search_container {
+  height: 15%;
+  position: relative;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url('../assets/homeImg.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  transition: height 0.7s linear;
+
+  &.home {
+    /* Position and center the image to scale nicely on all screens */
+    height: 50%;
+
+    h1 {
+      top: 60%;
+    }
+  }
+
+  h1 {
+    font-family: 'Haas Grot Text R Web', 'Helvetica Neue', Helvetica, Arial,
+      sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 56px;
+    color: white;
+    text-align: center;
+    top: 30%;
+    position: inherit;
+    margin-bottom: 50px;
+
+    transition: top 0.7s linear;
+  }
+
+  .search {
+    .search_input {
+      text-align: left;
+      padding-left: 50px;
+      padding-right: 50px;
+      width: 30%;
+      height: 64px;
+      font-size: 16px;
+      box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.06);
+      border-radius: 8px;
+      border: none;
+
+      &:focus,
+      :active,
+      :focus-visible {
+        outline: none;
+      }
+    }
+
+    .search_icon {
+      cursor: pointer;
+      position: relative;
+      left: 40px;
+      font-size: 25px;
+      transform: translate(0%, 25%);
+      color: rgba(60, 60, 60, 0.85);
+    }
+
+    .close_icon {
+      visibility: hidden;
+      cursor: pointer;
+      position: relative;
+      right: 40px;
+      font-size: 25px;
+      transform: translate(0%, 25%);
+      color: rgba(60, 60, 60, 0.85);
+
+      &.visible {
+        visibility: unset;
+      }
+    }
+
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin: auto;
+    transform: translate(-50%, -50%);
+  }
+
+  .filters {
+    justify-content: space-evenly;
+    display: flex;
+    width: 30%;
+    margin: auto;
+    margin-top: 10px;
+    label {
+      font-size: 16px;
+      padding-left: 5px;
+    }
+
+    input[type='checkbox'] {
+      width: 15px;
+      height: 15px;
+      border-radius: 4px;
+      border: 0.1mm solid #929292;
+    }
+  }
+}
