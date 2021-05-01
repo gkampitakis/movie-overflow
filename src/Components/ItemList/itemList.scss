@@ -4,9 +4,10 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(227, 227, 227, 1);
   border-radius: 8px;
-  width: 80%;
+  width: 95%;
   height: 180px;
   margin: 20px auto;
+  transition: transform 0.5s;
 
   img {
     height: 100%;
@@ -35,5 +36,10 @@
       color: black;
       font-size: 17px;
     }
+  }
+
+  &:hover {
+    -webkit-transform: scale(1.02);
+    transform: scale(1.02);
   }
 }

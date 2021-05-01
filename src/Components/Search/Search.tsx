@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { BsSearch } from 'react-icons/bs';
 import { IoMdClose } from 'react-icons/io';
 import { useHistory, useLocation } from 'react-router-dom';
+import { SearchOptions } from '../../types';
 import './search.scss';
 
 export default function Search() {
@@ -10,12 +11,7 @@ export default function Search() {
   const { pathname } = useLocation();
   const [isHome, setIsHome] = useState(true);
   const [query, setQuery] = useState('');
-  const [filters, setFilters] = useState({
-    actors: true,
-    movies: true,
-    series: true
-  });
-  const enabledInput = filters.actors || filters.movies || filters.series;
+  const [radioOption, setRadioOption] = useState<SearchOptions>('all');
 
   useEffect(() => {
     setIsHome(pathname === '/');
@@ -28,22 +24,23 @@ export default function Search() {
 
   useEffect(() => {
     inputRef.current?.focus();
+    handleSearch();
   }, []);
 
   const clearInput = () => {
     setQuery('');
   };
 
-  const handleFiltersChange = (field: 'actors' | 'movies' | 'series') => {
-    setFilters((filters) => ({ ...filters, [field]: !filters[field] }));
+  const handleRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setRadioOption(e.target.value as SearchOptions);
   };
 
   const handleSearch = () => {
-    if (!query || !enabledInput) return;
+    if (!query) return;
 
     history.push({
       pathname: `/search/${query}`,
-      state: { filters }
+      state: { searchBy: radioOption }
     });
   };
 
@@ -64,7 +61,6 @@ export default function Search() {
         />
         <input
           ref={inputRef}
-          disabled={!enabledInput}
           className="search_input"
           type="text"
           value={query}
@@ -79,31 +75,45 @@ export default function Search() {
         <div className="filters">
           <div>
             <input
-              type="checkbox"
+              type="radio"
+              id="all"
+              name="All"
+              value="all"
+              checked={radioOption === 'all'}
+              onChange={handleRadioChange}
+            />
+            <label htmlFor="all">All</label>
+          </div>
+          <div>
+            <input
+              type="radio"
               id="movie"
-              name="Movie"
-              defaultChecked={filters.movies}
-              onChange={() => handleFiltersChange('movies')}
+              name="movie"
+              value="movie"
+              checked={radioOption === 'movie'}
+              onChange={handleRadioChange}
             />
             <label htmlFor="Movie">Movie</label>
           </div>
           <div>
             <input
-              type="checkbox"
+              type="radio"
               id="tv_series"
               name="Tv Series"
-              defaultChecked={filters.series}
-              onChange={() => handleFiltersChange('series')}
+              value="tv"
+              checked={radioOption === 'tv'}
+              onChange={handleRadioChange}
             />
             <label htmlFor="tv_series">Tv Series</label>
           </div>
           <div>
             <input
-              type="checkbox"
+              type="radio"
               id="actor"
               name="Actor"
-              defaultChecked={filters.actors}
-              onChange={() => handleFiltersChange('actors')}
+              value="person"
+              checked={radioOption === 'person'}
+              onChange={handleRadioChange}
             />
             <label htmlFor="Actor">Actor</label>
           </div>

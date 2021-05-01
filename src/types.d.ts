@@ -13,6 +13,9 @@ export type Movie = {
 export type Series = {
   id: string;
   popularity: number;
+  name: string;
+  original_name: string;
+  poster_path: string;
   overview: string;
   original_name: string;
   first_air_date: string;
@@ -26,5 +29,11 @@ export type Actor = {
   name: string;
   popularity: string;
   known_for_department: string;
+  profile_path: string;
   media_type: 'person';
+  known_for: { original_title: string }[]
 };
+
+export type SearchResult = Actor | Movie | Series;
+
+export type SearchOptions = 'all' | 'movie' | 'tv' | 'person';

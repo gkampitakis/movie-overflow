@@ -1,5 +1,21 @@
 .search_results {
+  height: 65vh;
   flex-direction: column;
   justify-content: center;
   overflow-y: auto;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+
+  li {
+    margin: 10px;
+    cursor: pointer;
+  }
+  
+  .active {
+    color: red;
+    font-weight: 700;
+  }
 }
