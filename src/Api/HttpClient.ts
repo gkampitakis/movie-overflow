@@ -1,16 +1,20 @@
 /**
- * A thin wrapper around Fetch API, supports only get for now
+ * A thin wrapper around Fetch API, supports only get and post
  * Supports only json response as 'themoviedb' returns only JSON responses.
  */
 
 type HttpClientOptions = Omit<RequestInit, 'method' | 'body'> & {
   body?: unknown;
 };
-type method = 'GET';
+type method = 'GET' | 'POST';
 
 class HttpClient {
   get<T> (url: string, options?: HttpClientOptions): Promise<T> {
     return this.request(url, 'GET', options);
+  }
+
+  post<T> (url: string, options?: HttpClientOptions): Promise<T> {
+    return this.request(url, 'POST', options);
   }
 
   private request (url: Request | string, method: method, options: any = {}) {
@@ -27,8 +31,8 @@ class HttpClient {
 
       if (!contentType?.includes('application/json')) {
         return Promise.reject({
-          message: await d.text() || "An unknown error occurred",
-          statusCode: d.status
+          message: await d.text() || 'An unknown error occurred',
+          status: d.status
         });
       }
 
