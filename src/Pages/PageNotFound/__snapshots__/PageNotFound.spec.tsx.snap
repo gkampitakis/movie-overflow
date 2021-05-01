@@ -3,7 +3,7 @@
 exports[`PageNotFound Should render consistently 1`] = `
 <div>
   <section
-    class="main_content page_not_found"
+    class="main_content image_container"
   >
     <img
       alt="Page not found"

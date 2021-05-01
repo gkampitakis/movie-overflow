@@ -3,9 +3,32 @@
   flex-direction: column;
   justify-content: center;
   overflow-y: auto;
+
+  .no_results {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    img {
+      width: 350px;
+      margin: auto;
+      height: 40vh;
+    }
+
+    p {
+      font-size: 16px;
+      letter-spacing: 1px;
+      font-weight: 600;
+    }
+
+    span {
+      font-size: 36px;
+    }
+  }
 }
 
 .pagination {
+  margin-top: 2%;
   display: flex;
   justify-content: center;
 
@@ -13,7 +36,7 @@
     margin: 10px;
     cursor: pointer;
   }
-  
+
   .active {
     color: red;
     font-weight: 700;

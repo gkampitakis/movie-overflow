@@ -4,6 +4,7 @@ import { searchRequest } from '../../Api';
 import { SearchOptions, SearchResult } from '../../types';
 import ItemList from '../../Components/ItemList';
 import ReactPaginate from 'react-paginate';
+import NoDataLogo from '../../assets/noData.svg';
 import './searchResults.scss';
 
 type SearchResultsProps = RouteComponentProps<
@@ -42,6 +43,16 @@ export default function SearchResults(props: SearchResultsProps) {
       .catch(console.error);
   };
 
+  const noData = () => {
+    return (
+      <article className="image_container no_results">
+        <img src={NoDataLogo} alt="No results returned" />
+        <p>No results found for &apos;{query}&apos;</p>
+        <span>😭</span>
+      </article>
+    );
+  };
+
   useEffect(() => {
     handleRequest(1);
   }, [query, searchBy]);
@@ -53,25 +64,27 @@ export default function SearchResults(props: SearchResultsProps) {
           {results?.map((res) => (
             <ItemList item={res} key={res.id} />
           ))}
-          {!results?.length && <span>Not results found for {query}</span>}
+          {results && !results.length && noData()}
           {!results && <div>Loading...</div>}
         </div>
-        <ReactPaginate
-          previousLabel="previous"
-          nextLabel="next"
-          breakLabel="..."
-          pageCount={pageCount}
-          marginPagesDisplayed={2}
-          pageRangeDisplayed={5}
-          onPageChange={({ selected }) => {
-            const page = selected + 1;
-            setPage(page);
-            handleRequest(page);
-          }}
-          containerClassName={'pagination'}
-          activeClassName={'active'}
-          forcePage={page - 1}
-        />
+        {results && !!results.length && (
+          <ReactPaginate
+            previousLabel="previous"
+            nextLabel="next"
+            breakLabel="..."
+            pageCount={pageCount}
+            marginPagesDisplayed={2}
+            pageRangeDisplayed={5}
+            onPageChange={({ selected }) => {
+              const page = selected + 1;
+              setPage(page);
+              handleRequest(page);
+            }}
+            containerClassName={'pagination'}
+            activeClassName={'active'}
+            forcePage={page - 1}
+          />
+        )}
       </section>
     </>
   );

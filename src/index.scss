@@ -167,3 +167,16 @@ a {
   height: 65vh;
   margin: 100px auto;
 }
+
+.image_container {
+  text-align: center;
+
+  img {
+    user-select: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+  }
+}

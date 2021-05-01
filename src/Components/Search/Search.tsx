@@ -93,7 +93,7 @@ export default function Search() {
               checked={radioOption === 'movie'}
               onChange={handleRadioChange}
             />
-            <label htmlFor="Movie">Movie</label>
+            <label htmlFor="Movie">Movies</label>
           </div>
           <div>
             <input
@@ -115,7 +115,7 @@ export default function Search() {
               checked={radioOption === 'person'}
               onChange={handleRadioChange}
             />
-            <label htmlFor="Actor">Actor</label>
+            <label htmlFor="Actor">Actors</label>
           </div>
         </div>
       </div>
