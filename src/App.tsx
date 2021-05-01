@@ -1,8 +1,17 @@
 import React from 'react';
-import Router from './Router';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import Search from './Components/Search';
+import SearchResults from './Pages/SearchResults';
 
 function App() {
-  return <Router />;
+  return (
+    <BrowserRouter>
+      <Search />
+      <Switch>
+        <Route path="/search/:query" component={SearchResults} />
+      </Switch>
+    </BrowserRouter>
+  );
 }
 
 export default App;

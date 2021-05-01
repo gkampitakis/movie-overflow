@@ -1,0 +1,39 @@
+.item_list {
+  cursor: pointer;
+  display: flex;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(227, 227, 227, 1);
+  border-radius: 8px;
+  width: 80%;
+  height: 180px;
+  margin: 20px auto;
+
+  img {
+    height: 100%;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    max-width: 120px;
+  }
+
+  .details {
+    margin: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    h2 {
+      font-size: 1.5rem;
+      letter-spacing: 2px;
+      font-weight: 600;
+    }
+
+    p {
+      color: #999;
+    }
+
+    .overview {
+      color: black;
+      font-size: 17px;
+    }
+  }
+}
