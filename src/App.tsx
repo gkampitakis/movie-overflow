@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Search from './Components/Search';
+import PageNotFound from './Pages/PageNotFound';
 import SearchResults from './Pages/SearchResults';
 
 function App() {
@@ -8,7 +9,9 @@ function App() {
     <BrowserRouter>
       <Search />
       <Switch>
-        <Route path="/search/:query" component={SearchResults} />
+        <Route exact path="/search/:query" component={SearchResults} />
+        <Route exact path="/" />
+        <Route component={PageNotFound} />
       </Switch>
     </BrowserRouter>
   );

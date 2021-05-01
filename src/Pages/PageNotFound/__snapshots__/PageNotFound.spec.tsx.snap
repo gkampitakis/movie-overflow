@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PageNotFound Should render consistently 1`] = `
+<div>
+  <section
+    class="main_content page_not_found"
+  >
+    <img
+      alt="Page not found"
+      src="404.svg"
+    />
+  </section>
+</div>
+`;
