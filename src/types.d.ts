@@ -24,7 +24,7 @@ export type Series = {
   media_type: 'tv';
 };
 
-export type Actor = {
+export type Person = {
   id: string;
   name: string;
   popularity: string;
@@ -34,6 +34,75 @@ export type Actor = {
   known_for: { original_title: string }[]
 };
 
-export type SearchResult = Actor | Movie | Series;
+export type SearchResult = Person | Movie | Series;
 
 export type SearchOptions = 'all' | 'movie' | 'tv' | 'person';
+
+export type SearchRequest = {
+  results: SearchResult[];
+  total_pages: number;
+  page: number;
+};
+
+export type MovieDetails = {
+  id: string;
+  budget: number;
+  original_title: string;
+  overview: string;
+  popularity: number;
+  poster_path: string;
+  genres: {
+    id: string;
+    name: string;
+  }[];
+  release_date: string;
+  runtime: number;
+  revenue: number;
+  status: string;
+  tagline: string;
+  vote_average: number;
+  vote_count: number;
+  credits: {
+    cast: {
+      id: string;
+      known_for_department: string;
+      original_name: string;
+      popularity: number;
+      profile_path: string;
+      character: string;
+    }[],
+    crew: {
+      id: string;
+      known_for_department: string;
+      original_name: string;
+      popularity: number;
+      profile_path: string;
+      department: string;
+      job: string;
+    }[]
+  };
+  images: {
+    posters: {
+      file_path: string;
+    }[]
+  };
+}
+
+export type PersonDetails = {
+  id: string;
+  biography: string;
+  birthday: string;
+  deathday: string;
+  known_for_department: string;
+  place_of_birth: string;
+  name: string;
+  popularity: string;
+  profile_path: string;
+  combined_credits: {
+    cast: (Movie & {
+      character: string;
+
+    }) | [],
+    crew: []
+  }
+};

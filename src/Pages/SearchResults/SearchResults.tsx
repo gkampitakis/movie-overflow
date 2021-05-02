@@ -25,11 +25,7 @@ export default function SearchResults(props: SearchResultsProps) {
   const { searchBy } = props.location.state;
 
   const handleRequest = (page: number) => {
-    searchRequest<{
-      results: SearchResult[];
-      total_pages: number;
-      page: number;
-    }>(query, page, searchBy)
+    searchRequest(query, page, searchBy)
       .then((data) => {
         setPage(page);
         setPageCount(data.total_pages);

@@ -109,13 +109,13 @@ export default function Search() {
           <div>
             <input
               type="radio"
-              id="actor"
-              name="Actor"
+              id="person"
+              name="Person"
               value="person"
               checked={radioOption === 'person'}
               onChange={handleRadioChange}
             />
-            <label htmlFor="Actor">Actors</label>
+            <label htmlFor="Person">People</label>
           </div>
         </div>
       </div>
