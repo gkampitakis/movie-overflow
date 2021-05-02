@@ -1,24 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { RouteComponentProps } from 'react-router-dom';
-import { searchRequest } from '../../Api';
-import { SearchOptions, SearchResult } from '../../types';
-import { ItemList, Loader } from '../../Components';
+import React, { useState, useEffect, useRef } from 'react';
 import ReactPaginate from 'react-paginate';
+import { SearchResult, SearchResultsProps } from '../../types';
+import { ItemList, Loader } from '../../Components';
+import { searchRequest } from '../../Api';
 import NoDataLogo from '../../assets/noData.svg';
 import './searchResults.scss';
 
-type SearchResultsProps = RouteComponentProps<
-  {
-    query: string;
-  },
-  any,
-  {
-    searchBy: SearchOptions;
-  }
->;
-
 export default function SearchResults(props: SearchResultsProps) {
   const [results, setResults] = useState<SearchResult[] | undefined>();
+  const listRef = useRef<HTMLDivElement>(null);
   const [pageCount, setPageCount] = useState(0);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -60,7 +50,7 @@ export default function SearchResults(props: SearchResultsProps) {
   return (
     <>
       <section className="main_content">
-        <div className="search_results">
+        <div ref={listRef} className="search_results">
           {results?.map((res) => (
             <ItemList item={res} key={res.id} />
           ))}
@@ -76,6 +66,7 @@ export default function SearchResults(props: SearchResultsProps) {
             marginPagesDisplayed={2}
             pageRangeDisplayed={5}
             onPageChange={({ selected }) => {
+              listRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
               const page = selected + 1;
               setPage(page);
               handleRequest(page);

@@ -31,7 +31,7 @@ export type Person = {
   known_for_department: string;
   profile_path: string;
   media_type: 'person';
-  known_for: { original_title: string }[]
+  known_for: { original_title: string; name: string }[]
 };
 
 export type SearchResult = Person | Movie | Series;
@@ -101,8 +101,17 @@ export type PersonDetails = {
   combined_credits: {
     cast: (Movie & {
       character: string;
-
     }) | [],
     crew: []
   }
 };
+
+export type SearchResultsProps = RouteComponentProps<
+  {
+    query: string;
+  },
+  any,
+  {
+    searchBy: SearchOptions;
+  }
+>;

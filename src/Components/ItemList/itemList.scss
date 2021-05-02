@@ -17,15 +17,34 @@
   }
 
   .details {
+    width: 100%;
     margin: 10px 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 
+    .header {
+      display: flex;
+      justify-content: space-between;
+      p {
+        background: #ff5b5b;
+        color: white;
+        border-radius: 8px;
+        font-weight: 600;
+        height: 23px;
+        padding: 5px;
+        line-height: 11px;
+      }
+    }
+
     h2 {
       font-size: 1.5rem;
       letter-spacing: 2px;
       font-weight: 600;
+      max-width: 45vw;
+      white-space: nowrap;
+      overflow: hidden !important;
+      text-overflow: ellipsis;
     }
 
     p {
@@ -35,6 +54,10 @@
     .overview {
       color: black;
       font-size: 17px;
+      -webkit-line-clamp: 4;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
     }
   }
 

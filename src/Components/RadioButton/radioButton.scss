@@ -1,0 +1,15 @@
+.radio_button {
+  label {
+    cursor: pointer;
+    font-size: 16px;
+    padding-left: 5px;
+  }
+
+  input[type='checkbox'] {
+    cursor: pointer;
+    width: 15px;
+    height: 15px;
+    border-radius: 4px;
+    border: 0.1mm solid #929292;
+  }
+}

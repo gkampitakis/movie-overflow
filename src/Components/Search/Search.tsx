@@ -3,6 +3,7 @@ import { BsSearch } from 'react-icons/bs';
 import { IoMdClose } from 'react-icons/io';
 import { useHistory, useLocation } from 'react-router-dom';
 import { SearchOptions } from '../../types';
+import RadioButton from '../RadioButton';
 import './search.scss';
 
 export default function Search() {
@@ -73,50 +74,30 @@ export default function Search() {
           className={`close_icon ${!!query && 'visible'}`}
         />
         <div className="filters">
-          <div>
-            <input
-              type="radio"
-              id="all"
-              name="All"
-              value="all"
-              checked={radioOption === 'all'}
-              onChange={handleRadioChange}
-            />
-            <label htmlFor="all">All</label>
-          </div>
-          <div>
-            <input
-              type="radio"
-              id="movie"
-              name="movie"
-              value="movie"
-              checked={radioOption === 'movie'}
-              onChange={handleRadioChange}
-            />
-            <label htmlFor="Movie">Movies</label>
-          </div>
-          <div>
-            <input
-              type="radio"
-              id="tv_series"
-              name="Tv Series"
-              value="tv"
-              checked={radioOption === 'tv'}
-              onChange={handleRadioChange}
-            />
-            <label htmlFor="tv_series">Tv Series</label>
-          </div>
-          <div>
-            <input
-              type="radio"
-              id="person"
-              name="Person"
-              value="person"
-              checked={radioOption === 'person'}
-              onChange={handleRadioChange}
-            />
-            <label htmlFor="Person">People</label>
-          </div>
+          <RadioButton
+            name="All"
+            value="all"
+            checked={radioOption}
+            onClick={handleRadioChange}
+          />
+          <RadioButton
+            name="Movie"
+            value="movie"
+            checked={radioOption}
+            onClick={handleRadioChange}
+          />
+          <RadioButton
+            name="Tv Series"
+            value="tv"
+            checked={radioOption}
+            onClick={handleRadioChange}
+          />
+          <RadioButton
+            name="People"
+            value="person"
+            checked={radioOption}
+            onClick={handleRadioChange}
+          />
         </div>
       </div>
     </section>
