@@ -7,6 +7,10 @@ import fetchMock from 'jest-fetch-mock';
 
 fetchMock.enableMocks();
 
+export function mockResponseOnce (response: any, status = 200) {
+  fetchMock.mockResponseOnce(JSON.stringify(response), { headers: { 'content-type': 'application/json' }, status });
+}
+
 export const movieDetailsResponse = {
   id: 'mockId',
   original_title: 'mockTitle',

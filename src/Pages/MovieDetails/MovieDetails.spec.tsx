@@ -3,7 +3,7 @@ import MovieDetails from '.';
 import { render, act, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { FetchMock } from 'jest-fetch-mock';
-import { movieDetailsResponse } from '../../setupTests';
+import { movieDetailsResponse, mockResponseOnce } from '../../setupTests';
 
 const mockHistoryPush = jest.fn();
 jest.mock('react-router-dom', () => ({
@@ -22,9 +22,7 @@ describe('MovieDetails', () => {
   beforeEach(() => {
     fetchMock.resetMocks();
     mockHistoryPush.mockClear();
-    fetchMock.mockResponseOnce(JSON.stringify(movieDetailsResponse), {
-      headers: { 'content-type': 'application/json' }
-    });
+    mockResponseOnce(movieDetailsResponse);
   });
   it('Should show loading', async () => {
     await act(async () => {

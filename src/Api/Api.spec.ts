@@ -1,6 +1,7 @@
 import HttpClient from './HttpClient';
-import { searchRequest } from '.';
-import { FetchMock } from "jest-fetch-mock/types";
+import { searchRequest, getMovie, getPerson } from '.';
+import { FetchMock } from "jest-fetch-mock";
+import { mockResponseOnce } from '../setupTests';
 
 const fetchMock = fetch as FetchMock;
 
@@ -8,7 +9,6 @@ jest.mock('../config', () => ({ API_KEY: 'mockKey' }));
 
 describe('API', () => {
 
-  beforeAll(fetchMock.enableMocks);
   beforeEach(() => {
     fetchMock.resetMocks();
   });
@@ -17,8 +17,7 @@ describe('API', () => {
 
     describe('GET', () => {
       it('Should do a GET request and return response', async () => {
-        fetchMock.mockResponseOnce(JSON.stringify({ mock: 'response' }), { headers: { 'content-type': 'application/json' } });
-
+        mockResponseOnce({ mock: 'response' });
         const response = await HttpClient.get('mockUrl.com');
 
         expect(response).toEqual({
@@ -30,7 +29,7 @@ describe('API', () => {
       });
 
       it('Should reject when status >=400', () => {
-        fetchMock.mockResponseOnce(JSON.stringify({ mock: 'response' }), { headers: { 'content-type': 'application/json' }, status: 400 });
+        mockResponseOnce({ mock: 'response' }, 400);
 
         expect(HttpClient.get('mockUrl.com')).rejects.toEqual({
           mock: 'response'
@@ -58,7 +57,7 @@ describe('API', () => {
 
     describe('POST', () => {
       it('Should do a POST request and return response', async () => {
-        fetchMock.mockResponseOnce(JSON.stringify({ mock: 'response' }), { headers: { 'content-type': 'application/json' } });
+        mockResponseOnce({ mock: 'response' });
 
         const response = await HttpClient.post('mockUrl.com', { body: { data: 'mock' } });
         expect(response).toEqual({
@@ -77,7 +76,8 @@ describe('API', () => {
 
   describe('searchRequest', () => {
     it('Should call fetch with correct params for multi request', async () => {
-      fetchMock.mockResponseOnce(JSON.stringify({ mock: 'response' }), { headers: { 'content-type': 'application/json' } });
+      mockResponseOnce({ mock: 'response' });
+
       const url = 'https://api.themoviedb.org/3/search/multi?api_key=mockKey&query=test&page=1'
       await searchRequest('test', 1, 'all');
       expect(fetchMock).toHaveBeenCalledWith(url, {
@@ -86,9 +86,9 @@ describe('API', () => {
     });
 
     it('Should call fetch with correct params for person request', async () => {
-      fetchMock.mockResponseOnce(JSON.stringify({ mock: 'response' }), { headers: { 'content-type': 'application/json' } });
-      const url = 'https://api.themoviedb.org/3/search/person?api_key=mockKey&query=test&page=1';
+      mockResponseOnce({ mock: 'response' });
 
+      const url = 'https://api.themoviedb.org/3/search/person?api_key=mockKey&query=test&page=1';
       await searchRequest('test', 1, 'person');
       expect(fetchMock).toHaveBeenCalledWith(url, {
         method: 'GET'
@@ -96,4 +96,27 @@ describe('API', () => {
     });
   });
 
+  describe('getMovie', () => {
+    it('Should call fetch with correct params', async () => {
+      mockResponseOnce({ mock: 'response' });
+
+      const url = 'https://api.themoviedb.org/3/movie/mockId?api_key=mockKey&append_to_response=credits,images';
+      await getMovie('mockId');
+      expect(fetchMock).toHaveBeenCalledWith(url, {
+        method: 'GET'
+      });
+    });
+  });
+
+  describe('getPerson', () => {
+    it('Should call fetch with correct params', async () => {
+      mockResponseOnce({ mock: 'response' });
+
+      const url = 'https://api.themoviedb.org/3/person/mockId?api_key=mockKey&append_to_response=combined_credits';
+      await getPerson('mockId');
+      expect(fetchMock).toHaveBeenCalledWith(url, {
+        method: 'GET'
+      });
+    });
+  });
 });
