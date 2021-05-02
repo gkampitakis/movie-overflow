@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { RouteComponentProps, useHistory } from 'react-router-dom';
 import { AiOutlineClockCircle } from 'react-icons/ai';
 import { MovieDetails } from '../../types';
+import { Loader } from '../../Components';
 import { getMovie } from '../../Api';
 import './movieDetails.scss';
 
@@ -14,15 +15,26 @@ export default function _MovieDetails(
   props: RouteComponentProps<{ id: string }>
 ) {
   const history = useHistory();
+  const [loading, setLoading] = useState(false);
   const { id } = props.match.params;
   const [movieDetails, setMovieDetails] = useState<MovieDetails>();
 
   const handleRequest = () => {
+    setLoading(true);
+
     getMovie(id)
       .then((data) => {
         setMovieDetails(data);
       })
-      .catch(console.error);
+      .catch((error) => {
+        if (error.status === 404) {
+          return history.push({
+            pathname: '/notFound'
+          });
+        }
+        console.error(error);
+      })
+      .finally(() => setLoading(false));
   };
 
   const goTo = (id: string) => {
@@ -119,7 +131,7 @@ export default function _MovieDetails(
           </div>
         </>
       )}
-      {!movieDetails && <span>Loading...</span>}
+      <Loader loading={loading} />
     </section>
   );
 }

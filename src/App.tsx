@@ -19,6 +19,7 @@ function App() {
         <Route exact path="/tv/:id" component={SeriesDetails} />
         <Route exact path="/movie/:id" component={MovieDetails} />
         <Route exact path="/" />
+        <Route exact path="/notFound" component={PageNotFound}/>
         <Route component={PageNotFound} />
       </Switch>
     </BrowserRouter>

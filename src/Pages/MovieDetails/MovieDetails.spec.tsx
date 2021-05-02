@@ -25,8 +25,17 @@ describe('MovieDetails', () => {
     mockResponseOnce(movieDetailsResponse);
   });
   it('Should show loading', async () => {
+    fetchMock.resetMocks();
+    fetchMock.mockResponseOnce(
+      () =>
+        new Promise<string>((resolve) => {
+          setTimeout(() => resolve('{}'), 1000);
+        })
+    );
     await act(async () => {
       const { container } = render(<MovieDetails {...mockProps} />);
+
+      await screen.findByTestId('loader');
 
       expect(container).toMatchSnapshot();
     });
@@ -76,6 +85,20 @@ describe('MovieDetails', () => {
       });
       expect(mockHistoryPush).toHaveBeenCalledWith({
         pathname: '/person/crewId2'
+      });
+    });
+  });
+
+  it('Should redirect to page not found', async () => {
+    fetchMock.resetMocks();
+    mockResponseOnce('{}', 404);
+    await act(async () => {
+      render(<MovieDetails {...mockProps} />);
+
+      setImmediate(() => {
+        expect(mockHistoryPush).toHaveBeenCalledWith({
+          pathname: '/notFound'
+        });
       });
     });
   });

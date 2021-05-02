@@ -39,7 +39,7 @@ class HttpClient {
       const response = await d.json();
 
       if (d.status >= 400) {
-        return Promise.reject(response);
+        return Promise.reject({ ...response, status: d.status });
       }
 
       return response;

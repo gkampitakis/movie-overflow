@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 import { searchRequest } from '../../Api';
 import { SearchOptions, SearchResult } from '../../types';
-import ItemList from '../../Components/ItemList';
+import { ItemList, Loader } from '../../Components';
 import ReactPaginate from 'react-paginate';
 import NoDataLogo from '../../assets/noData.svg';
 import './searchResults.scss';
@@ -21,10 +21,13 @@ export default function SearchResults(props: SearchResultsProps) {
   const [results, setResults] = useState<SearchResult[] | undefined>();
   const [pageCount, setPageCount] = useState(0);
   const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(false);
   const { query } = props.match.params;
   const searchBy = props.location.state?.searchBy || 'all';
 
   const handleRequest = (page: number) => {
+    setLoading(true);
+
     searchRequest(query, page, searchBy)
       .then((data) => {
         setPage(page);
@@ -36,7 +39,8 @@ export default function SearchResults(props: SearchResultsProps) {
           }))
         );
       })
-      .catch(console.error);
+      .catch(console.error)
+      .finally(() => setLoading(false));
   };
 
   const noData = () => {
@@ -61,7 +65,7 @@ export default function SearchResults(props: SearchResultsProps) {
             <ItemList item={res} key={res.id} />
           ))}
           {results && !results.length && noData()}
-          {!results && <div>Loading...</div>}
+          <Loader loading={loading} />
         </div>
         {results && !!results.length && (
           <ReactPaginate

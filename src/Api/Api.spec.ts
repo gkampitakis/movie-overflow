@@ -32,7 +32,8 @@ describe('API', () => {
         mockResponseOnce({ mock: 'response' }, 400);
 
         expect(HttpClient.get('mockUrl.com')).rejects.toEqual({
-          mock: 'response'
+          mock: 'response',
+          status: 400
         });
       });
 

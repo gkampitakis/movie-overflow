@@ -181,9 +181,10 @@ exports[`MovieDetails Should show loading 1`] = `
   <section
     class="movie_details"
   >
-    <span>
-      Loading...
-    </span>
+    <div
+      class="loader"
+      data-testid="loader"
+    />
   </section>
 </div>
 `;
