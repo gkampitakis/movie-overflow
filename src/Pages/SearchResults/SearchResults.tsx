@@ -22,7 +22,7 @@ export default function SearchResults(props: SearchResultsProps) {
   const [pageCount, setPageCount] = useState(0);
   const [page, setPage] = useState(1);
   const { query } = props.match.params;
-  const { searchBy } = props.location.state;
+  const searchBy = props.location.state?.searchBy || 'all';
 
   const handleRequest = (page: number) => {
     searchRequest(query, page, searchBy)
