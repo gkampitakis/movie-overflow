@@ -88,6 +88,52 @@ export type MovieDetails = {
   };
 }
 
+export type TvSeriesDetails = {
+  id: string;
+  first_air_date: string;
+  poster_path: string;
+  genres: {
+    id: string;
+    name: string;
+  }[];
+  overview: string;
+  tagline: string;
+  status: string;
+  last_air_date: string;
+  original_name: string;
+  number_of_episodes: number;
+  number_of_seasons: number;
+  vote_average: number;
+  vote_count: number;
+  seasons: {
+    episode_count: number;
+    id: number;
+    name: string;
+    overview: string;
+    poster_path: string;
+    season_number: number;
+  }[];
+  credits: {
+    cast: {
+      id: string;
+      known_for_department: string;
+      original_name: string;
+      popularity: number;
+      profile_path: string;
+      character: string;
+    }[];
+    crew: {
+      id: string;
+      known_for_department: string;
+      original_name: string;
+      popularity: number;
+      profile_path: string;
+      department: string;
+      job: string;
+    }[];
+  };
+};
+
 export type PersonDetails = {
   id: string;
   biography: string;

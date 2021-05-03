@@ -1,0 +1,178 @@
+.tv_series_details {
+  display: flex;
+  width: 70%;
+  margin: 100px auto;
+  padding-bottom: 40px;
+
+  .details {
+    flex: 3;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+
+    .tv_header {
+      background: #333;
+      color: white;
+      height: 100px;
+      justify-content: space-between;
+      display: flex;
+      flex-direction: column;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+
+      h1 {
+        font-size: 1.5rem;
+        letter-spacing: 1px;
+        margin: 5px;
+      }
+
+      p {
+        margin: 5px;
+        font-size: 1rem;
+      }
+    }
+
+    .overview {
+      display: flex;
+      flex-direction: row;
+
+      div {
+        .tagline {
+          font-style: italic;
+          text-align: center;
+          font-weight: 600;
+        }
+
+        p {
+          font-size: 0.9rem;
+          text-align: left;
+          margin: 10px;
+        }
+
+        display: flex;
+        vertical-align: middle;
+        flex-direction: column;
+        justify-content: space-around;
+      }
+    }
+
+    hr {
+      margin: 10px 0;
+      border: 0.1px solid #e6e6e6;
+    }
+
+    .general {
+      margin: 0.35em 0 0.25em;
+      color: #666666;
+      font-size: 13px;
+      margin: 10px;
+      justify-content: space-around;
+      display: flex;
+
+      h3 {
+        padding: 0;
+        font-weight: bold;
+      }
+
+      .released {
+        justify-content: space-evenly;
+        text-align: center;
+        display: flex;
+        width: 50%;
+      }
+
+      .statistics {
+        justify-content: space-around;
+        display: flex;
+        flex-direction: row;
+      }
+    }
+
+    .seasons_title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin: 10px;
+    }
+
+    .seasons {
+      display: flex;
+      overflow: auto;
+      width: 50vw;
+      margin: auto 20px;
+
+      .season {
+        cursor: pointer;
+        transition: all linear 0.2s;
+        margin: auto 20px;
+
+        h3 {
+          font-weight: bold;
+          color: #666666;
+          text-align: center;
+        }
+
+        &.selected {
+          background: red;
+        }
+
+        &:first-child {
+          margin-left: unset;
+        }
+      }
+    }
+
+    .season_details {
+      margin: 10px;
+      h2 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+    }
+  }
+
+  .credits {
+    text-align: center;
+    flex: 1;
+    height: 69vh;
+    overflow: auto;
+    min-width: 350px;
+
+    h2 {
+      font-size: 1.5rem;
+      letter-spacing: 1px;
+    }
+
+    div {
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      width: 50%;
+      margin: 10px auto;
+      border-radius: 8px;
+      cursor: pointer;
+
+      h3 {
+        font-size: 1rem;
+        font-weight: 500;
+      }
+      p {
+        color: #666666;
+      }
+    }
+
+    .avatar {
+      width: 130px;
+      height: 130px;
+      margin: 25px auto;
+      overflow: hidden;
+      border-radius: 50%;
+      position: relative;
+
+      img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+  }
+}

@@ -31,13 +31,20 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --silent",
     "eject": "react-scripts eject",
-    "test:coverage": "npm run test -- --collect-coverage"
+    "test:coverage": "npm run test -- --collect-coverage --watchAll"
   },
   "jest": {
+    "coveragePathIgnorePatterns": [
+      ".*__snapshots__/.*"
+    ],
     "collectCoverageFrom": [
-      "!src/**/index.tsx"
+      "!src/**/index.tsx",
+      "!src/assets/**",
+      "!src/**/*.d.ts",
+      "!src/config.ts",
+      "!src/App.tsx"
     ]
   },
   "eslintConfig": {

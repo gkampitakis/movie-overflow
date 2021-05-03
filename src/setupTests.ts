@@ -114,3 +114,60 @@ export const searchResponse = {
     }]
   }
 };
+
+export const tvSeriesDetailsResponse = {
+  id: 'mockId',
+  original_name: 'mockTitle',
+  genres: [{ name: 'test' }],
+  poster_path: '/mock_path',
+  tagline: 'mockTagLine',
+  overview: 'mockOverview',
+  status: 'mockStatus',
+  last_air_date: 'mockDate',
+  number_of_seasons: 10,
+  seasons: [{
+    id: 1,
+    name: 'mockSeason1',
+    overview: 'mockOverview1',
+    poster_path: 'mockPosterPath1',
+    episode_count: 10
+  },
+  {
+    id: 2,
+    name: 'mockSeason2',
+    overview: 'mockOverview2',
+    poster_path: 'mockPosterPath2',
+    episode_count: 15
+  }],
+  vote_average: 100,
+  credits: {
+    cast: [
+      {
+        id: 'id1',
+        profile_path: 'cast_path',
+        original_name: 'mockName',
+        character: 'character1'
+      },
+      {
+        id: 'id2',
+        profile_path: null,
+        original_name: 'mockName2',
+        character: 'character2'
+      }
+    ],
+    crew: [
+      {
+        id: 'crewId1',
+        profile_path: 'crew_path',
+        original_name: 'crewMockName',
+        job: 'job1'
+      },
+      {
+        id: 'crewId2',
+        profile_path: null,
+        original_name: 'crewMockName2',
+        job: 'job2'
+      }
+    ]
+  }
+};

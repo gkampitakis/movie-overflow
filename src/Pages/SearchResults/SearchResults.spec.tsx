@@ -101,6 +101,24 @@ describe('SearchResults', () => {
   });
 
   it('Should query by person', async () => {
+    fetchMock.resetMocks();
+    const mockResponseData = { ...searchResponse.response };
+    mockResponseData.results.push({
+      id: 2,
+      profile_path: '/profile_path',
+      name: 'mockName',
+      known_for_department: 'actor',
+      known_for: [
+        {
+          original_title: 'mockTitle'
+        },
+        {
+          name: 'mockName'
+        }
+      ]
+    } as any);
+
+    mockResponseOnce(mockResponseData);
     const props = {
         ...mockProps,
         location: { state: { searchBy: 'person' } }

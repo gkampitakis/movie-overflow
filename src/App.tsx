@@ -6,7 +6,7 @@ import {
   SearchResults,
   PersonDetails,
   MovieDetails,
-  SeriesDetails
+  TvSeriesDetails
 } from './Pages';
 
 function App() {
@@ -16,10 +16,10 @@ function App() {
       <Switch>
         <Route exact path="/search/:query" component={SearchResults} />
         <Route exact path="/person/:id" component={PersonDetails} />
-        <Route exact path="/tv/:id" component={SeriesDetails} />
+        <Route exact path="/tv/:id" component={TvSeriesDetails} />
         <Route exact path="/movie/:id" component={MovieDetails} />
         <Route exact path="/" />
-        <Route exact path="/notFound" component={PageNotFound}/>
+        <Route exact path="/notFound" component={PageNotFound} />
         <Route component={PageNotFound} />
       </Switch>
     </BrowserRouter>

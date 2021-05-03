@@ -1,13 +1,13 @@
 import React from 'react';
-import MovieDetails from '.';
+import TvSeriesDetails from '.';
 import { render, act, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { FetchMock } from 'jest-fetch-mock';
 import {
-  movieDetailsResponse,
   mockResponseOnce,
   mockDelayedResponseOnce,
-  mockHistoryPush
+  mockHistoryPush,
+  tvSeriesDetailsResponse
 } from '../../setupTests';
 
 const fetchMock = fetch as FetchMock;
@@ -15,17 +15,18 @@ const mockProps = {
   match: { params: { id: 'mockId' } }
 } as any;
 
-describe('MovieDetails', () => {
+describe('TvSeriesDetails', () => {
   beforeEach(() => {
     fetchMock.resetMocks();
     mockHistoryPush.mockClear();
-    mockResponseOnce(movieDetailsResponse);
+    mockResponseOnce(tvSeriesDetailsResponse);
   });
+
   it('Should show loading', async () => {
     fetchMock.resetMocks();
     mockDelayedResponseOnce({});
     await act(async () => {
-      const { container } = render(<MovieDetails {...mockProps} />);
+      const { container } = render(<TvSeriesDetails {...mockProps} />);
 
       await screen.findByTestId('loader');
 
@@ -35,7 +36,7 @@ describe('MovieDetails', () => {
 
   it('Should render consistently', async () => {
     await act(async () => {
-      const { container } = render(<MovieDetails {...mockProps} />);
+      const { container } = render(<TvSeriesDetails {...mockProps} />);
 
       await screen.findByText(/mockTitle/i);
 
@@ -43,27 +44,9 @@ describe('MovieDetails', () => {
     });
   });
 
-  it('Should open new tab with image', async () => {
-    const openSpy = jest.spyOn(window, 'open').mockImplementation();
-
-    await act(async () => {
-      render(<MovieDetails {...mockProps} />);
-
-      await screen.findByText(/mockTitle/i);
-      const img = screen.getAllByAltText(/mockTitle/i);
-
-      userEvent.click(img[1]);
-
-      expect(openSpy).toHaveBeenCalledWith(
-        'https://image.tmdb.org/t/p/original/mock_image_path',
-        '_blank'
-      );
-    });
-  });
-
   it("Should go to person's page", async () => {
     await act(async () => {
-      render(<MovieDetails {...mockProps} />);
+      render(<TvSeriesDetails {...mockProps} />);
 
       await screen.findByText(/mockTitle/i);
       const cast = screen.getByAltText('mockName');
@@ -81,11 +64,40 @@ describe('MovieDetails', () => {
     });
   });
 
+  it('Should not try to render crew if no resources are returned from api', async () => {
+    fetchMock.resetMocks();
+    const response = { ...tvSeriesDetailsResponse };
+    response.credits.crew = [];
+    mockResponseOnce(response);
+    await act(async () => {
+      const { container } = render(<TvSeriesDetails {...mockProps} />);
+
+      await screen.findByText(/mockTitle/i);
+
+      expect(screen.queryByText('Crew')).toBeNull();
+      expect(container).toMatchSnapshot();
+    });
+  });
+
+  it('Should change selected season', async () => {
+    await act(async () => {
+      const { container } = render(<TvSeriesDetails {...mockProps} />);
+
+      await screen.findByText(/mockTitle/i);
+
+      const seasonBtn = screen.getByAltText('mockSeason2');
+      userEvent.click(seasonBtn);
+
+      expect(screen.queryByText('mockOverview2')).toBeDefined();
+      expect(container).toMatchSnapshot();
+    });
+  });
+
   it('Should redirect to page not found', async () => {
     fetchMock.resetMocks();
     mockResponseOnce('{}', 404);
     await act(async () => {
-      render(<MovieDetails {...mockProps} />);
+      render(<TvSeriesDetails {...mockProps} />);
 
       setImmediate(() => {
         expect(mockHistoryPush).toHaveBeenCalledWith({
@@ -101,7 +113,7 @@ describe('MovieDetails', () => {
     const logSpy = jest.spyOn(console, 'error');
 
     await act(async () => {
-      render(<MovieDetails {...mockProps} />);
+      render(<TvSeriesDetails {...mockProps} />);
 
       setImmediate(() => {
         expect(logSpy).toHaveBeenCalled();

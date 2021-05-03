@@ -1,5 +1,5 @@
 import HttpClient from './HttpClient';
-import { searchRequest, getMovie, getPerson } from '.';
+import { searchRequest, getMovie, getPerson, getTvSeries } from '.';
 import { FetchMock } from "jest-fetch-mock";
 import { mockResponseOnce } from '../setupTests';
 
@@ -118,4 +118,17 @@ describe('API', () => {
       });
     });
   });
+
+  describe('getTv', () => {
+    it('Should call fetch with correct params', async () => {
+      mockResponseOnce({ mock: 'response' });
+
+      const url = 'https://api.themoviedb.org/3/tv/mockId?api_key=mockKey&append_to_response=credits';
+      await getTvSeries('mockId');
+      expect(fetchMock).toHaveBeenCalledWith(url, {
+        method: 'GET'
+      });
+    });
+  });
+
 });
