@@ -1,0 +1,373 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchResults Should change page 1`] = `
+<div>
+  <section
+    class="main_content"
+  >
+    <div
+      class="search_results"
+    >
+      <article
+        class="item_list"
+      >
+        <img
+          alt="mockTitle"
+          loading="lazy"
+          src="https://image.tmdb.org/t/p/w185//post_path"
+        />
+        <div
+          class="details"
+        >
+          <div>
+            <div
+              class="header"
+            >
+              <h2>
+                mockTitle
+              </h2>
+              <p>
+                Movie
+              </p>
+            </div>
+            <p>
+              mockDate
+            </p>
+          </div>
+          <p
+            class="overview"
+          >
+            mockOverview
+          </p>
+        </div>
+      </article>
+      <div
+        class="loader"
+        data-testid="loader"
+      />
+    </div>
+    <ul
+      class="pagination"
+    >
+      <li
+        class="previous"
+      >
+        <a
+          aria-disabled="false"
+          aria-label="Previous page"
+          rel="prev"
+          role="button"
+          tabindex="0"
+        >
+          previous
+        </a>
+      </li>
+      <li>
+        <a
+          aria-label="Page 1"
+          role="button"
+          tabindex="0"
+        >
+          1
+        </a>
+      </li>
+      <li
+        class="active"
+      >
+        <a
+          aria-current="page"
+          aria-label="Page 2 is your current page"
+          role="button"
+          tabindex="0"
+        >
+          2
+        </a>
+      </li>
+      <li>
+        <a
+          aria-label="Page 3"
+          role="button"
+          tabindex="0"
+        >
+          3
+        </a>
+      </li>
+      <li>
+        <a
+          aria-label="Page 4"
+          role="button"
+          tabindex="0"
+        >
+          4
+        </a>
+      </li>
+      <li>
+        <a
+          aria-label="Page 5"
+          role="button"
+          tabindex="0"
+        >
+          5
+        </a>
+      </li>
+      <li>
+        <a
+          aria-label="Page 6"
+          role="button"
+          tabindex="0"
+        >
+          6
+        </a>
+      </li>
+      <li
+        class="break"
+      >
+        <a
+          role="button"
+          tabindex="0"
+        >
+          ...
+        </a>
+      </li>
+      <li>
+        <a
+          aria-label="Page 9"
+          role="button"
+          tabindex="0"
+        >
+          9
+        </a>
+      </li>
+      <li>
+        <a
+          aria-label="Page 10"
+          role="button"
+          tabindex="0"
+        >
+          10
+        </a>
+      </li>
+      <li
+        class="next"
+      >
+        <a
+          aria-disabled="false"
+          aria-label="Next page"
+          rel="next"
+          role="button"
+          tabindex="0"
+        >
+          next
+        </a>
+      </li>
+    </ul>
+  </section>
+</div>
+`;
+
+exports[`SearchResults Should render consistently 1`] = `
+<div>
+  <section
+    class="main_content"
+  >
+    <div
+      class="search_results"
+    >
+      <article
+        class="item_list"
+      >
+        <img
+          alt="mockTitle"
+          loading="lazy"
+          src="https://image.tmdb.org/t/p/w185//post_path"
+        />
+        <div
+          class="details"
+        >
+          <div>
+            <div
+              class="header"
+            >
+              <h2>
+                mockTitle
+              </h2>
+              <p>
+                Movie
+              </p>
+            </div>
+            <p>
+              mockDate
+            </p>
+          </div>
+          <p
+            class="overview"
+          >
+            mockOverview
+          </p>
+        </div>
+      </article>
+    </div>
+    <ul
+      class="pagination"
+    >
+      <li
+        class="previous disabled"
+      >
+        <a
+          aria-disabled="true"
+          aria-label="Previous page"
+          rel="prev"
+          role="button"
+          tabindex="0"
+        >
+          previous
+        </a>
+      </li>
+      <li
+        class="active"
+      >
+        <a
+          aria-current="page"
+          aria-label="Page 1 is your current page"
+          role="button"
+          tabindex="0"
+        >
+          1
+        </a>
+      </li>
+      <li>
+        <a
+          aria-label="Page 2"
+          role="button"
+          tabindex="0"
+        >
+          2
+        </a>
+      </li>
+      <li>
+        <a
+          aria-label="Page 3"
+          role="button"
+          tabindex="0"
+        >
+          3
+        </a>
+      </li>
+      <li>
+        <a
+          aria-label="Page 4"
+          role="button"
+          tabindex="0"
+        >
+          4
+        </a>
+      </li>
+      <li>
+        <a
+          aria-label="Page 5"
+          role="button"
+          tabindex="0"
+        >
+          5
+        </a>
+      </li>
+      <li>
+        <a
+          aria-label="Page 6"
+          role="button"
+          tabindex="0"
+        >
+          6
+        </a>
+      </li>
+      <li
+        class="break"
+      >
+        <a
+          role="button"
+          tabindex="0"
+        >
+          ...
+        </a>
+      </li>
+      <li>
+        <a
+          aria-label="Page 9"
+          role="button"
+          tabindex="0"
+        >
+          9
+        </a>
+      </li>
+      <li>
+        <a
+          aria-label="Page 10"
+          role="button"
+          tabindex="0"
+        >
+          10
+        </a>
+      </li>
+      <li
+        class="next"
+      >
+        <a
+          aria-disabled="false"
+          aria-label="Next page"
+          rel="next"
+          role="button"
+          tabindex="0"
+        >
+          next
+        </a>
+      </li>
+    </ul>
+  </section>
+</div>
+`;
+
+exports[`SearchResults Should show loading 1`] = `
+<div>
+  <section
+    class="main_content"
+  >
+    <div
+      class="search_results"
+    >
+      <div
+        class="loader"
+        data-testid="loader"
+      />
+    </div>
+  </section>
+</div>
+`;
+
+exports[`SearchResults Should show no results message 1`] = `
+<div>
+  <section
+    class="main_content"
+  >
+    <div
+      class="search_results"
+    >
+      <article
+        class="image_container no_results"
+      >
+        <img
+          alt="No results returned"
+          src="noData.svg"
+        />
+        <p>
+          No results found for '
+          mockQuery
+          '
+        </p>
+        <span>
+          😭
+        </span>
+      </article>
+    </div>
+  </section>
+</div>
+`;

@@ -3,15 +3,13 @@ import MovieDetails from '.';
 import { render, act, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { FetchMock } from 'jest-fetch-mock';
-import { movieDetailsResponse, mockResponseOnce } from '../../setupTests';
+import {
+  movieDetailsResponse,
+  mockResponseOnce,
+  mockDelayedResponseOnce,
+  mockHistoryPush
+} from '../../setupTests';
 
-const mockHistoryPush = jest.fn();
-jest.mock('react-router-dom', () => ({
-  ...jest.requireActual('react-router-dom'),
-  useHistory: () => ({
-    push: mockHistoryPush
-  })
-}));
 
 const fetchMock = fetch as FetchMock;
 const mockProps = {
@@ -26,12 +24,7 @@ describe('MovieDetails', () => {
   });
   it('Should show loading', async () => {
     fetchMock.resetMocks();
-    fetchMock.mockResponseOnce(
-      () =>
-        new Promise<string>((resolve) => {
-          setTimeout(() => resolve('{}'), 1000);
-        })
-    );
+    mockDelayedResponseOnce({});
     await act(async () => {
       const { container } = render(<MovieDetails {...mockProps} />);
 

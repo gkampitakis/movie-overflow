@@ -7,9 +7,45 @@ import fetchMock from 'jest-fetch-mock';
 
 fetchMock.enableMocks();
 
+/**
+ * In jest scrollTo is undefined so we are defining it and 
+ * assigning a spy
+ */
+export const scrollSpy = jest.fn();
+Element.prototype.scrollTo = scrollSpy;
+
+/**
+ * Mocking react router dom history and adding a spy
+ */
+export const mockHistoryPush = jest.fn();
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useHistory: () => ({
+    push: mockHistoryPush
+  })
+}));
+/**
+ * Mocking config globally as we don't want to have our 
+ * actual key in tests
+ */
+jest.mock('./config', () => ({ API_KEY: 'mockKey' }));
+
 export function mockResponseOnce (response: any, status = 200) {
   fetchMock.mockResponseOnce(JSON.stringify(response), { headers: { 'content-type': 'application/json' }, status });
 }
+
+export function mockDelayedResponseOnce (response: any) {
+  fetchMock.mockResponseOnce(
+    () =>
+      new Promise<string>((resolve) => {
+        setTimeout(() => resolve(JSON.stringify(response)), 1000);
+      })
+  );
+}
+
+/**
+ * Mock responses for the test suite
+ */
 
 export const movieDetailsResponse = {
   id: 'mockId',
@@ -58,5 +94,23 @@ export const movieDetailsResponse = {
         job: 'job2'
       }
     ]
+  }
+};
+
+export const searchResponse = {
+  noData: {
+    total_pages: 0,
+    results: []
+  },
+  response: {
+    total_pages: 10,
+    results: [{
+      id: 1,
+      poster_path: '/post_path',
+      original_title: 'mockTitle',
+      release_date: 'mockDate',
+      overview: 'mockOverview',
+      media_type: 'movie'
+    }]
   }
 };

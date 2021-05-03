@@ -5,8 +5,6 @@ import { mockResponseOnce } from '../setupTests';
 
 const fetchMock = fetch as FetchMock;
 
-jest.mock('../config', () => ({ API_KEY: 'mockKey' }));
-
 describe('API', () => {
 
   beforeEach(() => {

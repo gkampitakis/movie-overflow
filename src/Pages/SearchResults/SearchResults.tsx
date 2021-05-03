@@ -15,6 +15,13 @@ export default function SearchResults(props: SearchResultsProps) {
   const { query } = props.match.params;
   const searchBy = props.location.state?.searchBy || 'all';
 
+  const onPageChange = ({ selected }: { selected: number }) => {
+    listRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
+    const page = selected + 1;
+    setPage(page);
+    handleRequest(page);
+  };
+
   const handleRequest = (page: number) => {
     setLoading(true);
 
@@ -65,12 +72,7 @@ export default function SearchResults(props: SearchResultsProps) {
             pageCount={pageCount}
             marginPagesDisplayed={2}
             pageRangeDisplayed={5}
-            onPageChange={({ selected }) => {
-              listRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
-              const page = selected + 1;
-              setPage(page);
-              handleRequest(page);
-            }}
+            onPageChange={onPageChange}
             containerClassName={'pagination'}
             activeClassName={'active'}
             forcePage={page - 1}
