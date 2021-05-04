@@ -2,9 +2,33 @@ import React, { useState, useEffect, useRef } from 'react';
 import { BsSearch } from 'react-icons/bs';
 import { IoMdClose } from 'react-icons/io';
 import { useHistory, useLocation } from 'react-router-dom';
-import { SearchOptions } from '../../types';
-import RadioButton from '../RadioButton';
+import { SearchOptions, Suggestion } from '../../types';
+import { searchRequest } from '../../Api';
+import { Loader, RadioButton } from '../';
 import './search.scss';
+
+const DEBOUNCE_TIMER = 500;
+
+function extractSuggestions(data: any[], option: SearchOptions): Suggestion[] {
+  if (!data.length) return [];
+  const random = Math.floor(Math.random() * data.length);
+
+  return data.slice(random, random + 5).map((elem) => {
+    const media_type = elem.media_type ? elem.media_type : option;
+    let title = elem.original_title;
+    if (media_type === 'tv') {
+      title = elem.original_name;
+    } else if (media_type === 'person') {
+      title = elem.name;
+    }
+
+    return {
+      id: elem.id,
+      title,
+      media_type
+    };
+  });
+}
 
 export default function Search() {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -13,6 +37,11 @@ export default function Search() {
   const [isHome, setIsHome] = useState(true);
   const [query, setQuery] = useState('');
   const [radioOption, setRadioOption] = useState<SearchOptions>('all');
+  const [suggestions, setSuggestions] = useState<Suggestion[] | undefined>();
+  const [loading, setLoading] = useState<boolean>(false);
+  const searchDebounce = useRef<ReturnType<typeof setTimeout> | undefined>(
+    undefined
+  );
 
   useEffect(() => {
     setIsHome(pathname === '/');
@@ -30,6 +59,18 @@ export default function Search() {
 
   const clearInput = () => {
     setQuery('');
+    setSuggestions([]);
+  };
+
+  const handleRequest = () => {
+    setLoading(true);
+
+    searchRequest(query, 1, radioOption)
+      .then((data) => {
+        setSuggestions(extractSuggestions(data.results, radioOption));
+      })
+      .catch(console.error)
+      .finally(() => setLoading(false));
   };
 
   const handleRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -38,6 +79,7 @@ export default function Search() {
 
   const handleSearch = () => {
     if (!query) return;
+    setSuggestions([]);
 
     history.push({
       pathname: `/search/${query}`,
@@ -45,34 +87,49 @@ export default function Search() {
     });
   };
 
+  const navigate = (pathname: string) => {
+    setSuggestions([]);
+
+    history.push({
+      pathname
+    });
+  };
+
   const enterHandler = (e: React.KeyboardEvent<HTMLDivElement>) => {
     if (e.key === 'Enter') {
-      handleSearch();
+      return handleSearch();
     }
+
+    if (e.key === 'Escape' || e.key === 'Esc') {
+      setSuggestions([]);
+    }
+  };
+
+  const returnHome = () => {
+    navigate('/');
+    setQuery('');
+    setRadioOption('all');
+  };
+
+  const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const input = e.target.value;
+    setQuery(input);
+
+    if (input.length <= 5) {
+      setSuggestions([]);
+      return;
+    }
+
+    if (searchDebounce.current) clearTimeout(searchDebounce.current);
+    searchDebounce.current = setTimeout(() => {
+      handleRequest();
+    }, DEBOUNCE_TIMER);
   };
 
   return (
     <section className={`search_container ${isHome && 'home'}`}>
-      <h1>Movie Overflow</h1>
+      <h1 onClick={returnHome}>Movie Overflow</h1>
       <div className="search">
-        <BsSearch
-          type="submit"
-          className="search_icon"
-          onClick={handleSearch}
-        />
-        <input
-          ref={inputRef}
-          className="search_input"
-          type="text"
-          value={query}
-          onKeyDown={enterHandler}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder="Search..."
-        />
-        <IoMdClose
-          onClick={clearInput}
-          className={`close_icon ${!!query && 'visible'}`}
-        />
         <div className="filters">
           <RadioButton
             name="All"
@@ -98,6 +155,42 @@ export default function Search() {
             checked={radioOption}
             onClick={handleRadioChange}
           />
+        </div>
+        <div className="input_wrapper">
+          <BsSearch
+            type="submit"
+            className="search_icon"
+            onClick={handleSearch}
+          />
+          <input
+            autoComplete="off"
+            ref={inputRef}
+            className="search_input"
+            type="text"
+            value={query}
+            onKeyDown={enterHandler}
+            onChange={handleInput}
+            placeholder="Search..."
+          />
+          <IoMdClose
+            onClick={clearInput}
+            className={`close_icon ${!!query && 'visible'}`}
+          />
+          {!!suggestions?.length && (
+            <div className={`suggestions ${loading && 'loading'}`}>
+              <Loader loading={loading} />
+              {suggestions.map(({ media_type, id, title }) => (
+                <div
+                  onClick={() => navigate(`/${media_type}/${id}`)}
+                  key={id}
+                  className="item"
+                >
+                  <h3>{title}</h3>
+                  <div className="type">{media_type}</div>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </section>

@@ -161,3 +161,9 @@ export type SearchResultsProps = RouteComponentProps<
     searchBy: SearchOptions;
   }
 >;
+
+export type Suggestion = {
+  media_type: 'movie' | 'tv' | 'person';
+  title: string;
+  id: string;
+};

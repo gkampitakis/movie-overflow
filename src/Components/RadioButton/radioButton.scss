@@ -12,4 +12,8 @@
     border-radius: 4px;
     border: 0.1mm solid #929292;
   }
+
+  input[type='radio'] {
+    cursor: pointer;
+  }
 }
