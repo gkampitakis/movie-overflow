@@ -1,0 +1,231 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ItemList Movie item Should render consistently 1`] = `
+<div>
+  <article
+    class="item_list"
+    data-testid="item-list"
+  >
+    <img
+      alt="mockTitle"
+      loading="lazy"
+      src="https://image.tmdb.org/t/p/w185/mock_path"
+    />
+    <div
+      class="details"
+    >
+      <div>
+        <div
+          class="header"
+        >
+          <h2>
+            mockTitle
+          </h2>
+          <p>
+            Movie
+          </p>
+        </div>
+        <p>
+          mockDate
+        </p>
+      </div>
+      <p
+        class="overview"
+      >
+        mockOverview
+      </p>
+    </div>
+  </article>
+</div>
+`;
+
+exports[`ItemList Movie item Should render placeholder image 1`] = `
+<div>
+  <article
+    class="item_list"
+    data-testid="item-list"
+  >
+    <img
+      alt="mockTitle"
+      loading="lazy"
+      src="placeholder.jpeg"
+    />
+    <div
+      class="details"
+    >
+      <div>
+        <div
+          class="header"
+        >
+          <h2>
+            mockTitle
+          </h2>
+          <p>
+            Movie
+          </p>
+        </div>
+        <p>
+          mockDate
+        </p>
+      </div>
+      <p
+        class="overview"
+      >
+        mockOverview
+      </p>
+    </div>
+  </article>
+</div>
+`;
+
+exports[`ItemList Person item Should render consistently 1`] = `
+<div>
+  <article
+    class="item_list"
+    data-testid="item-list"
+  >
+    <img
+      alt="mockName"
+      loading="lazy"
+      src="https://image.tmdb.org/t/p/w185/mock_path"
+    />
+    <div
+      class="details"
+    >
+      <div>
+        <div
+          class="header"
+        >
+          <h2>
+            mockName
+          </h2>
+          <p>
+            Person
+          </p>
+        </div>
+        <p>
+          Actor
+        </p>
+      </div>
+      <p
+        class="overview"
+      >
+        mockTvSeries, mockMovie
+      </p>
+    </div>
+  </article>
+</div>
+`;
+
+exports[`ItemList Person item Should render placeholder image 1`] = `
+<div>
+  <article
+    class="item_list"
+    data-testid="item-list"
+  >
+    <img
+      alt="mockName"
+      loading="lazy"
+      src="https://eu.ui-avatars.com/api/?size=185&name=mockName"
+    />
+    <div
+      class="details"
+    >
+      <div>
+        <div
+          class="header"
+        >
+          <h2>
+            mockName
+          </h2>
+          <p>
+            Person
+          </p>
+        </div>
+        <p>
+          Actor
+        </p>
+      </div>
+      <p
+        class="overview"
+      >
+        mockTvSeries, mockMovie
+      </p>
+    </div>
+  </article>
+</div>
+`;
+
+exports[`ItemList Tv item Should render consistently 1`] = `
+<div>
+  <article
+    class="item_list"
+    data-testid="item-list"
+  >
+    <img
+      alt="mockTitle"
+      loading="lazy"
+      src="https://image.tmdb.org/t/p/w185/mock_path"
+    />
+    <div
+      class="details"
+    >
+      <div>
+        <div
+          class="header"
+        >
+          <h2>
+            mockTitle
+          </h2>
+          <p>
+            Tv Series
+          </p>
+        </div>
+        <p />
+      </div>
+      <p
+        class="overview"
+      >
+        mockOverview
+      </p>
+    </div>
+  </article>
+</div>
+`;
+
+exports[`ItemList Tv item Should render placeholder image 1`] = `
+<div>
+  <article
+    class="item_list"
+    data-testid="item-list"
+  >
+    <img
+      alt="mockTitle"
+      loading="lazy"
+      src="placeholder.jpeg"
+    />
+    <div
+      class="details"
+    >
+      <div>
+        <div
+          class="header"
+        >
+          <h2>
+            mockTitle
+          </h2>
+          <p>
+            Tv Series
+          </p>
+        </div>
+        <p />
+      </div>
+      <p
+        class="overview"
+      >
+        mockOverview
+      </p>
+    </div>
+  </article>
+</div>
+`;

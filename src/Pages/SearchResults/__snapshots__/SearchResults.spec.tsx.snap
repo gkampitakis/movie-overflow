@@ -10,6 +10,7 @@ exports[`SearchResults Should change page 1`] = `
     >
       <article
         class="item_list"
+        data-testid="item-list"
       >
         <img
           alt="mockTitle"
@@ -175,6 +176,7 @@ exports[`SearchResults Should render consistently 1`] = `
     >
       <article
         class="item_list"
+        data-testid="item-list"
       >
         <img
           alt="mockTitle"

@@ -8,7 +8,7 @@ const imgSrc = (path: string) =>
 export function TvItem(tv: Series) {
   return (
     <>
-      <img src={imgSrc(tv.poster_path)} loading="lazy" alt={tv.name} />
+      <img src={imgSrc(tv.poster_path)} loading="lazy" alt={tv.original_name} />
       <div className="details">
         <div>
           <div className="header">

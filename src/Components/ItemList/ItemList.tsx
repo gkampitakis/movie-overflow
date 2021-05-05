@@ -26,6 +26,7 @@ export default function ItemList(props: ItemListProps) {
 
   return (
     <article
+      data-testid="item-list"
       className="item_list"
       onClick={() => goTo(props.item.id, props.item.media_type)}
     >

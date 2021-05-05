@@ -171,3 +171,38 @@ export const tvSeriesDetailsResponse = {
     ]
   }
 };
+
+export const mockPerson = {
+  id: '1',
+  media_type: 'person' as const,
+  known_for: [
+    {
+      name: 'mockTvSeries'
+    },
+    {
+      original_title: 'mockMovie'
+    }
+  ] as any,
+  popularity: '100',
+  profile_path: 'mock_path',
+  name: 'mockName',
+  known_for_department: 'Actor'
+};
+
+export const mockMovie = {
+  id: '2',
+  poster_path: 'mock_path',
+  original_title: 'mockTitle',
+  release_date: 'mockDate',
+  overview: 'mockOverview',
+  media_type: 'movie' as const,
+} as any;
+
+export const mockTvSeries = {
+  id: '3',
+  original_name: 'mockTitle',
+  first_air_data: 'mockDate',
+  overview: 'mockOverview',
+  poster_path: 'mock_path',
+  media_type: 'tv' as const,
+} as any;
