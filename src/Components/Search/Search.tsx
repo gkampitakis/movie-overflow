@@ -44,9 +44,7 @@ export default function Search() {
   );
 
   useEffect(() => {
-    if (pathname === '/') {
-      return setIsHome(true);
-    }
+    setIsHome(pathname === '/');
 
     const [, path, queryString] = pathname.split('/');
     if (path === 'search') {

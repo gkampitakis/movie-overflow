@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { RouteComponentProps, useHistory } from 'react-router-dom';
 import { TvSeriesDetails } from '../../types';
+import Placeholder from '../../assets/placeholder.jpeg';
 import { Loader } from '../../Components';
 import { getTvSeries } from '../../Api';
 import './tvSeriesDetails.scss';
 
 const imgSrc = (path: string, width: '185' | '92') =>
-  `https://image.tmdb.org/t/p/w${width}${path}`;
+  path ? `https://image.tmdb.org/t/p/w${width}${path}` : Placeholder;
 
 export default function _TvSeriesDetails(
   props: RouteComponentProps<{ id: string }>
@@ -63,7 +64,9 @@ export default function _TvSeriesDetails(
                 alt={tvSeriesDetails.original_name}
               />
               <div>
-                <p className="tagline">{tvSeriesDetails.tagline}</p>
+                {tvSeriesDetails.tagline && (
+                  <p className="tagline">{tvSeriesDetails.tagline}</p>
+                )}
                 <p>{tvSeriesDetails.overview}</p>
               </div>
             </article>
@@ -94,68 +97,77 @@ export default function _TvSeriesDetails(
                 </div>
               </div>
             </article>
-            <hr />
-            <h2 className="seasons_title">Seasons</h2>
-            <article className="seasons">
-              {tvSeriesDetails.seasons.map((season, idx) => (
-                <div
-                  onClick={() => setSelectedSeason(idx)}
-                  className={`season ${idx === selectedSeason && 'selected'}`}
-                  key={season.id}
-                >
-                  <img
-                    src={imgSrc(season.poster_path, '92')}
-                    alt={season.name}
-                  />
+            {!!tvSeriesDetails.seasons.length && (
+              <>
+                <hr />
+                <h2 className="seasons_title">Seasons</h2>
+                <article className="seasons">
+                  {tvSeriesDetails.seasons.map((season, idx) => (
+                    <div
+                      onClick={() => setSelectedSeason(idx)}
+                      className={`season ${
+                        idx === selectedSeason && 'selected'
+                      }`}
+                      key={season.id}
+                    >
+                      <img
+                        src={imgSrc(season.poster_path, '92')}
+                        alt={season.name}
+                      />
+                    </div>
+                  ))}
+                </article>
+                <article className="season_details">
+                  <h2>
+                    {tvSeriesDetails.seasons[selectedSeason].name} | Episodes:{' '}
+                    {tvSeriesDetails.seasons[selectedSeason].episode_count}
+                  </h2>
+                  <p>{tvSeriesDetails.seasons[selectedSeason].overview}</p>
+                </article>
+              </>
+            )}
+          </div>
+          {(!!tvSeriesDetails.credits.cast.length ||
+            !!tvSeriesDetails.credits.crew.length) && (
+            <div className="credits">
+              {!!tvSeriesDetails.credits.cast.length && <h2>Cast</h2>}
+              {tvSeriesDetails.credits.cast.map((person) => (
+                <div onClick={() => goTo(person.id)} key={person.id}>
+                  <div className="avatar">
+                    <img
+                      loading="lazy"
+                      src={
+                        person.profile_path
+                          ? imgSrc(person.profile_path, '185')
+                          : `https://eu.ui-avatars.com/api/?size=185&name=${person.original_name}`
+                      }
+                      alt={person.original_name}
+                    />
+                  </div>
+                  <h3>{person.original_name}</h3>
+                  <p>as {person.character}</p>
                 </div>
               ))}
-            </article>
-            <article className="season_details">
-              <h2>
-                {tvSeriesDetails.seasons[selectedSeason].name} | Episodes:{' '}
-                {tvSeriesDetails.seasons[selectedSeason].episode_count}
-              </h2>
-              <p>{tvSeriesDetails.seasons[selectedSeason].overview}</p>
-            </article>
-          </div>
-          <div className="credits">
-            <h2>Cast</h2>
-            {tvSeriesDetails.credits.cast.map((person) => (
-              <div onClick={() => goTo(person.id)} key={person.id}>
-                <div className="avatar">
-                  <img
-                    loading="lazy"
-                    src={
-                      person.profile_path
-                        ? imgSrc(person.profile_path, '185')
-                        : `https://eu.ui-avatars.com/api/?size=185&name=${person.original_name}`
-                    }
-                    alt={person.original_name}
-                  />
+              {!!tvSeriesDetails.credits.crew.length && <h2>Crew</h2>}
+              {tvSeriesDetails.credits.crew.map((person) => (
+                <div onClick={() => goTo(person.id)} key={person.id}>
+                  <div className="avatar">
+                    <img
+                      loading="lazy"
+                      src={
+                        person.profile_path
+                          ? imgSrc(person.profile_path, '185')
+                          : `https://eu.ui-avatars.com/api/?size=185&name=${person.original_name}`
+                      }
+                      alt={person.original_name}
+                    />
+                  </div>
+                  <h3>{person.original_name}</h3>
+                  <p>{person.job}</p>
                 </div>
-                <h3>{person.original_name}</h3>
-                <p>as {person.character}</p>
-              </div>
-            ))}
-            {!!tvSeriesDetails.credits.crew.length && <h2>Crew</h2>}
-            {tvSeriesDetails.credits.crew.map((person) => (
-              <div onClick={() => goTo(person.id)} key={person.id}>
-                <div className="avatar">
-                  <img
-                    loading="lazy"
-                    src={
-                      person.profile_path
-                        ? imgSrc(person.profile_path, '185')
-                        : `https://eu.ui-avatars.com/api/?size=185&name=${person.original_name}`
-                    }
-                    alt={person.original_name}
-                  />
-                </div>
-                <h3>{person.original_name}</h3>
-                <p>{person.job}</p>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </>
       )}
       <Loader loading={loading} />

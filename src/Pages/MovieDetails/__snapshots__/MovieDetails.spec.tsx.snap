@@ -14,8 +14,8 @@ exports[`MovieDetails Should render consistently 1`] = `
         </h1>
         <p>
           test
-           |
            
+          | 
           100
            
           <svg
