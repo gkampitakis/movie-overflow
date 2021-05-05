@@ -18,6 +18,7 @@ export default function RadioButton(props: RadioButtonProps) {
     >
       <input
         type="radio"
+        data-testid={`${name}-radio`}
         id={value}
         name={name}
         value={value}

@@ -44,7 +44,9 @@ export default function Search() {
   );
 
   useEffect(() => {
-    setIsHome(pathname === '/');
+    if (pathname === '/') {
+      return setIsHome(true);
+    }
 
     const [, path, queryString] = pathname.split('/');
     if (path === 'search') {
@@ -95,7 +97,7 @@ export default function Search() {
     });
   };
 
-  const enterHandler = (e: React.KeyboardEvent<HTMLDivElement>) => {
+  const keyboardHandler = (e: React.KeyboardEvent<HTMLDivElement>) => {
     if (e.key === 'Enter') {
       return handleSearch();
     }
@@ -159,6 +161,7 @@ export default function Search() {
         <div className="input_wrapper">
           <BsSearch
             type="submit"
+            data-testid="search-icon"
             className="search_icon"
             onClick={handleSearch}
           />
@@ -168,11 +171,12 @@ export default function Search() {
             className="search_input"
             type="text"
             value={query}
-            onKeyDown={enterHandler}
+            onKeyDown={keyboardHandler}
             onChange={handleInput}
             placeholder="Search..."
           />
           <IoMdClose
+            data-testid="clear-icon"
             onClick={clearInput}
             className={`close_icon ${!!query && 'visible'}`}
           />
