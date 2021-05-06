@@ -183,10 +183,43 @@ export const mockPerson = {
       original_title: 'mockMovie'
     }
   ] as any,
+  biography: "mockBiography",
+  deathday: "deathDay",
+  place_of_birth: "mockPlace",
   popularity: '100',
   profile_path: 'mock_path',
   name: 'mockName',
-  known_for_department: 'Actor'
+  known_for_department: 'Actor',
+  combined_credits: {
+    cast: [{
+      id: '1',
+      media_type: 'movie',
+      poster_path: 'mockPath',
+      character: 'voldemort',
+      original_title: 'mockTitle',
+    },
+    {
+      id: '2',
+      media_type: 'tv',
+      poster_path: 'mockPath2',
+      character: 'potter',
+      original_name: 'mockTitle2'
+    }],
+    crew: [{
+      id: '3',
+      media_type: 'tv',
+      poster_path: 'mockPath3',
+      job: 'wizard',
+      original_title: 'original_title3'
+    },
+    {
+      id: '4',
+      media_type: 'movie',
+      poster_path: 'mockPath4',
+      job: 'director',
+      original_name: 'original_name4'
+    }]
+  }
 };
 
 export const mockMovie = {

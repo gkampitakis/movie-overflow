@@ -94,7 +94,11 @@ export default function _PersonDetails(
                         key={id}
                         onClick={() => goTo(id, media_type)}
                       >
-                        <img src={imgSrc(poster_path, '92')} alt={name} />
+                        <img
+                          src={imgSrc(poster_path, '92')}
+                          alt={name}
+                          loading="lazy"
+                        />
                         <div>
                           <h3>{name}</h3>
                           {character && <p>as {character}</p>}
@@ -111,7 +115,11 @@ export default function _PersonDetails(
                         key={id}
                         onClick={() => goTo(id, media_type)}
                       >
-                        <img src={imgSrc(poster_path, '92')} alt={name} />
+                        <img
+                          src={imgSrc(poster_path, '92')}
+                          alt={name}
+                          loading="lazy"
+                        />
                         <div>
                           <h3>{name}</h3>
                           {job && <p>as {job}</p>}

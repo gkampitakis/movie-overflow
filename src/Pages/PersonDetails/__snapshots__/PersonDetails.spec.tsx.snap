@@ -1,0 +1,379 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PersonDetails Should not render credits column if no data 1`] = `
+<div>
+  <section
+    class="person_details"
+  >
+    <div
+      class="details"
+    >
+      <header
+        class="person_header"
+      >
+        <h1>
+          mockName
+        </h1>
+        <p>
+          Actor
+        </p>
+      </header>
+      <article
+        class="overview"
+      >
+        <img
+          alt="mockName"
+          src="https://image.tmdb.org/t/p/w185mock_path"
+        />
+        <div>
+          <p>
+            mockBiography
+          </p>
+          <ul
+            class="info"
+          >
+            <li>
+              <span>
+                Birthday:
+              </span>
+               
+            </li>
+            <li>
+              <span>
+                Deathday:
+              </span>
+               
+              deathDay
+            </li>
+            <li>
+              <span>
+                Place of birth:
+              </span>
+               
+              mockPlace
+            </li>
+            <li>
+              <span>
+                Popularity:
+              </span>
+               
+              100
+            </li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </section>
+</div>
+`;
+
+exports[`PersonDetails Should render consistently 1`] = `
+<div>
+  <section
+    class="person_details"
+  >
+    <div
+      class="details"
+    >
+      <header
+        class="person_header"
+      >
+        <h1>
+          mockName
+        </h1>
+        <p>
+          Actor
+        </p>
+      </header>
+      <article
+        class="overview"
+      >
+        <img
+          alt="mockName"
+          src="https://image.tmdb.org/t/p/w185mock_path"
+        />
+        <div>
+          <p>
+            mockBiography
+          </p>
+          <ul
+            class="info"
+          >
+            <li>
+              <span>
+                Birthday:
+              </span>
+               
+            </li>
+            <li>
+              <span>
+                Deathday:
+              </span>
+               
+              deathDay
+            </li>
+            <li>
+              <span>
+                Place of birth:
+              </span>
+               
+              mockPlace
+            </li>
+            <li>
+              <span>
+                Popularity:
+              </span>
+               
+              100
+            </li>
+          </ul>
+        </div>
+      </article>
+      <hr />
+      <h2
+        class="known_for"
+      >
+        Known for:
+      </h2>
+      <article
+        class="credits"
+      >
+        <div
+          class="item"
+        >
+          <img
+            alt="mockTitle"
+            loading="lazy"
+            src="https://image.tmdb.org/t/p/w92mockPath"
+          />
+          <div>
+            <h3>
+              mockTitle
+            </h3>
+            <p>
+              as 
+              voldemort
+            </p>
+          </div>
+        </div>
+        <div
+          class="item"
+        >
+          <img
+            alt="mockTitle2"
+            loading="lazy"
+            src="https://image.tmdb.org/t/p/w92mockPath2"
+          />
+          <div>
+            <h3>
+              mockTitle2
+            </h3>
+            <p>
+              as 
+              potter
+            </p>
+          </div>
+        </div>
+        <div
+          class="item"
+        >
+          <img
+            alt="original_title3"
+            loading="lazy"
+            src="https://image.tmdb.org/t/p/w92mockPath3"
+          />
+          <div>
+            <h3>
+              original_title3
+            </h3>
+            <p>
+              as 
+              wizard
+            </p>
+          </div>
+        </div>
+        <div
+          class="item"
+        >
+          <img
+            alt="original_name4"
+            loading="lazy"
+            src="https://image.tmdb.org/t/p/w92mockPath4"
+          />
+          <div>
+            <h3>
+              original_name4
+            </h3>
+            <p>
+              as 
+              director
+            </p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+</div>
+`;
+
+exports[`PersonDetails Should render placeholder image 1`] = `
+<div>
+  <section
+    class="person_details"
+  >
+    <div
+      class="details"
+    >
+      <header
+        class="person_header"
+      >
+        <h1>
+          mockName
+        </h1>
+        <p>
+          Actor
+        </p>
+      </header>
+      <article
+        class="overview"
+      >
+        <img
+          alt="mockName"
+          src="placeholder.jpeg"
+        />
+        <div>
+          <p>
+            mockBiography
+          </p>
+          <ul
+            class="info"
+          >
+            <li>
+              <span>
+                Birthday:
+              </span>
+               
+            </li>
+            <li>
+              <span>
+                Deathday:
+              </span>
+               
+              deathDay
+            </li>
+            <li>
+              <span>
+                Place of birth:
+              </span>
+               
+              mockPlace
+            </li>
+            <li>
+              <span>
+                Popularity:
+              </span>
+               
+              100
+            </li>
+          </ul>
+        </div>
+      </article>
+      <hr />
+      <h2
+        class="known_for"
+      >
+        Known for:
+      </h2>
+      <article
+        class="credits"
+      >
+        <div
+          class="item"
+        >
+          <img
+            alt="mockTitle"
+            loading="lazy"
+            src="https://image.tmdb.org/t/p/w92mockPath"
+          />
+          <div>
+            <h3>
+              mockTitle
+            </h3>
+            <p>
+              as 
+              voldemort
+            </p>
+          </div>
+        </div>
+        <div
+          class="item"
+        >
+          <img
+            alt="mockTitle2"
+            loading="lazy"
+            src="https://image.tmdb.org/t/p/w92mockPath2"
+          />
+          <div>
+            <h3>
+              mockTitle2
+            </h3>
+            <p>
+              as 
+              potter
+            </p>
+          </div>
+        </div>
+        <div
+          class="item"
+        >
+          <img
+            alt="original_title3"
+            loading="lazy"
+            src="https://image.tmdb.org/t/p/w92mockPath3"
+          />
+          <div>
+            <h3>
+              original_title3
+            </h3>
+            <p>
+              as 
+              wizard
+            </p>
+          </div>
+        </div>
+        <div
+          class="item"
+        >
+          <img
+            alt="original_name4"
+            loading="lazy"
+            src="https://image.tmdb.org/t/p/w92mockPath4"
+          />
+          <div>
+            <h3>
+              original_name4
+            </h3>
+            <p>
+              as 
+              director
+            </p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+</div>
+`;
+
+exports[`PersonDetails Should show loading 1`] = `
+<div>
+  <section
+    class="person_details"
+  >
+    <div
+      class="loader"
+      data-testid="loader"
+    />
+  </section>
+</div>
+`;

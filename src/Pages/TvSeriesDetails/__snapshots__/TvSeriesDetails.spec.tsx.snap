@@ -171,6 +171,305 @@ exports[`TvSeriesDetails Should change selected season 1`] = `
 </div>
 `;
 
+exports[`TvSeriesDetails Should load default values 1`] = `
+<div>
+  <section
+    class="tv_series_details"
+  >
+    <div
+      class="details"
+    >
+      <header
+        class="tv_header"
+      >
+        <h1>
+          mockTitle
+        </h1>
+        <p>
+          Unknown
+        </p>
+      </header>
+      <article
+        class="overview"
+      >
+        <img
+          alt="mockTitle"
+          src="placeholder.jpeg"
+        />
+        <div>
+          <p
+            class="tagline"
+          >
+            mockTagLine
+          </p>
+          <p>
+            mockOverview
+          </p>
+        </div>
+      </article>
+      <article
+        class="general"
+      >
+        <div
+          class="released"
+        >
+          <div>
+            <h3>
+              Status:
+            </h3>
+            <p>
+              mockStatus
+            </p>
+          </div>
+          <div>
+            <h3>
+              Started:
+            </h3>
+            <p />
+          </div>
+          <div>
+            <h3>
+              Finished:
+            </h3>
+             
+            <p>
+              mockDate
+            </p>
+          </div>
+          <div>
+            <h3>
+              Seasons: 
+            </h3>
+            <p>
+              10
+            </p>
+          </div>
+          <div>
+            <h3>
+              Vote: 
+            </h3>
+            <p>
+              100
+               ✨
+            </p>
+          </div>
+        </div>
+      </article>
+      <hr />
+      <h2
+        class="seasons_title"
+      >
+        Seasons
+      </h2>
+      <article
+        class="seasons"
+      >
+        <div
+          class="season selected"
+        >
+          <img
+            alt="mockSeason1"
+            src="https://image.tmdb.org/t/p/w92mockPosterPath1"
+          />
+        </div>
+        <div
+          class="season false"
+        >
+          <img
+            alt="mockSeason2"
+            src="https://image.tmdb.org/t/p/w92mockPosterPath2"
+          />
+        </div>
+      </article>
+      <article
+        class="season_details"
+      >
+        <h2>
+          mockSeason1
+           | Episodes:
+           
+          10
+        </h2>
+        <p>
+          mockOverview1
+        </p>
+      </article>
+    </div>
+    <div
+      class="credits"
+    >
+      <h2>
+        Cast
+      </h2>
+      <div>
+        <div
+          class="avatar"
+        >
+          <img
+            alt="mockName"
+            loading="lazy"
+            src="https://image.tmdb.org/t/p/w185cast_path"
+          />
+        </div>
+        <h3>
+          mockName
+        </h3>
+        <p>
+          as 
+          character1
+        </p>
+      </div>
+      <div>
+        <div
+          class="avatar"
+        >
+          <img
+            alt="mockName2"
+            loading="lazy"
+            src="https://eu.ui-avatars.com/api/?size=185&name=mockName2"
+          />
+        </div>
+        <h3>
+          mockName2
+        </h3>
+        <p>
+          as 
+          character2
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+`;
+
+exports[`TvSeriesDetails Should not render credits column if no data 1`] = `
+<div>
+  <section
+    class="tv_series_details"
+  >
+    <div
+      class="details"
+    >
+      <header
+        class="tv_header"
+      >
+        <h1>
+          mockTitle
+        </h1>
+        <p>
+          test
+        </p>
+      </header>
+      <article
+        class="overview"
+      >
+        <img
+          alt="mockTitle"
+          src="https://image.tmdb.org/t/p/w185/mock_path"
+        />
+        <div>
+          <p
+            class="tagline"
+          >
+            mockTagLine
+          </p>
+          <p>
+            mockOverview
+          </p>
+        </div>
+      </article>
+      <article
+        class="general"
+      >
+        <div
+          class="released"
+        >
+          <div>
+            <h3>
+              Status:
+            </h3>
+            <p>
+              mockStatus
+            </p>
+          </div>
+          <div>
+            <h3>
+              Started:
+            </h3>
+            <p />
+          </div>
+          <div>
+            <h3>
+              Finished:
+            </h3>
+             
+            <p>
+              mockDate
+            </p>
+          </div>
+          <div>
+            <h3>
+              Seasons: 
+            </h3>
+            <p>
+              10
+            </p>
+          </div>
+          <div>
+            <h3>
+              Vote: 
+            </h3>
+            <p>
+              100
+               ✨
+            </p>
+          </div>
+        </div>
+      </article>
+      <hr />
+      <h2
+        class="seasons_title"
+      >
+        Seasons
+      </h2>
+      <article
+        class="seasons"
+      >
+        <div
+          class="season selected"
+        >
+          <img
+            alt="mockSeason1"
+            src="https://image.tmdb.org/t/p/w92mockPosterPath1"
+          />
+        </div>
+        <div
+          class="season false"
+        >
+          <img
+            alt="mockSeason2"
+            src="https://image.tmdb.org/t/p/w92mockPosterPath2"
+          />
+        </div>
+      </article>
+      <article
+        class="season_details"
+      >
+        <h2>
+          mockSeason1
+           | Episodes:
+           
+          10
+        </h2>
+        <p>
+          mockOverview1
+        </p>
+      </article>
+    </div>
+  </section>
+</div>
+`;
+
 exports[`TvSeriesDetails Should not try to render crew if no resources are returned from api 1`] = `
 <div>
   <section

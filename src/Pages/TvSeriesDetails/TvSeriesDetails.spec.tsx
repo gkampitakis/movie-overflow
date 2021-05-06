@@ -120,4 +120,36 @@ describe('TvSeriesDetails', () => {
       });
     });
   });
+
+  it('Should load default values', async () => {
+    fetchMock.resetMocks();
+    const response = { ...tvSeriesDetailsResponse };
+    response.poster_path = '';
+    response.genres = [];
+    mockResponseOnce(response);
+
+    await act(async () => {
+      const { container } = render(<TvSeriesDetails {...mockProps} />);
+
+      await screen.findByText(/mockTitle/i);
+
+      expect(container).toMatchSnapshot();
+    });
+  });
+
+  it('Should not render credits column if no data', async () => {
+    fetchMock.resetMocks();
+    const response = { ...tvSeriesDetailsResponse };
+    response.credits.cast = [];
+    response.credits.crew = [];
+    mockResponseOnce(response);
+
+    await act(async () => {
+      const { container } = render(<TvSeriesDetails {...mockProps} />);
+
+      await screen.findByText(/mockTitle/i);
+
+      expect(container).toMatchSnapshot();
+    });
+  });
 });

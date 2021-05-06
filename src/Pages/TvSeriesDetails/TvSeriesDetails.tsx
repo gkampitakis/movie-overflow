@@ -55,7 +55,8 @@ export default function _TvSeriesDetails(
             <header className="tv_header">
               <h1>{tvSeriesDetails.original_name}</h1>
               <p>
-                {tvSeriesDetails.genres.map((genre) => genre.name).join(', ')}
+                {tvSeriesDetails.genres.map((genre) => genre.name).join(', ') ||
+                  'Unknown'}
               </p>
             </header>
             <article className="overview">
