@@ -97,6 +97,7 @@ export default function Search() {
 
   const keyboardHandler = (e: React.KeyboardEvent<HTMLDivElement>) => {
     if (e.key === 'Enter') {
+      if (searchDebounce.current) clearTimeout(searchDebounce.current);
       return handleSearch();
     }
 

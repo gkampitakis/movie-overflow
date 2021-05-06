@@ -3,4 +3,112 @@
   width: 70%;
   margin: 100px auto;
   padding-bottom: 40px;
+
+  .details {
+    height: 100%;
+    flex: 3;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+
+    .info {
+      span {
+        font-weight: bold;
+      }
+    }
+
+    .person_header {
+      background: #333;
+      color: white;
+      height: 100px;
+      justify-content: space-between;
+      display: flex;
+      flex-direction: column;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+
+      h1 {
+        font-size: 1.5rem;
+        letter-spacing: 1px;
+        margin: 5px;
+      }
+
+      p {
+        margin: 5px;
+        font-size: 1rem;
+      }
+    }
+
+    .overview {
+      display: flex;
+      flex-direction: row;
+
+      img {
+        max-width: 200px;
+      }
+
+      div {
+        p {
+          font-size: 0.9rem;
+          text-align: left;
+        }
+
+        margin: 10px;
+        display: flex;
+        vertical-align: middle;
+        flex-direction: column;
+        justify-content: space-around;
+      }
+    }
+  }
+
+  hr {
+    margin: 10px 0;
+    border: 0.1px solid #e6e6e6;
+  }
+
+  .known_for {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 10px;
+  }
+
+  .credits {
+    height: 25vh;
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: auto auto auto;
+
+    &:last-child {
+      margin-bottom: 20px;
+    }
+
+    .item {
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      width: 90%;
+      margin: 10px auto;
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: row;
+
+      div {
+        text-align: center;
+        margin: auto;
+        h3 {
+          font-size: 1rem;
+          flex: 1;
+        }
+
+        p {
+          font-size: 0.8rem;
+          color: #333;
+        }
+      }
+
+      img {
+        max-width: 40px;
+      }
+    }
+  }
 }

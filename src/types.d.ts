@@ -142,13 +142,26 @@ export type PersonDetails = {
   known_for_department: string;
   place_of_birth: string;
   name: string;
-  popularity: string;
+  popularity: number;
   profile_path: string;
   combined_credits: {
-    cast: (Movie & {
+    cast: {
+      id: string;
       character: string;
-    }) | [],
-    crew: []
+      original_title: string;
+      original_name: string;
+      poster_path: string;
+      media_type: 'movie' | 'tv';
+    }[],
+    crew: {
+      id: string;
+      department: string;
+      job: string;
+      original_title: string;
+      original_name: string;
+      poster_path: string;
+      media_type: 'movie' | 'tv';
+    }[]
   }
 };
 
