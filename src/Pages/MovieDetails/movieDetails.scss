@@ -4,6 +4,12 @@
   margin: 100px auto;
   padding-bottom: 40px;
 
+  .title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 10px;
+  }
+
   .details {
     flex: 2;
     height: 100%;
@@ -20,12 +26,6 @@
       flex-direction: column;
       border-top-left-radius: 8px;
       border-top-right-radius: 8px;
-
-      h1 {
-        font-size: 1.5rem;
-        letter-spacing: 1px;
-        margin: 5px;
-      }
 
       p {
         margin: 5px;
@@ -80,23 +80,11 @@
       }
 
       .released {
-        justify-content: center;
+        justify-content: space-evenly;
         text-align: center;
         display: flex;
-        flex-direction: column;
+        width: 50%;
       }
-
-      .statistics {
-        justify-content: space-around;
-        display: flex;
-        flex-direction: row;
-      }
-    }
-
-    .photos_title {
-      font-size: 1.2rem;
-      font-weight: 600;
-      margin: 10px;
     }
 
     .photos {
@@ -112,53 +100,42 @@
   }
 
   .credits {
-    text-align: center;
-    flex: 1;
-    height: 69vh;
-    overflow: auto;
-    min-width: 350px;
+    height: 25vh;
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: auto auto auto;
 
-    h2 {
-      font-size: 1.5rem;
-      letter-spacing: 1px;
+    &:last-child {
+      margin-bottom: 20px;
     }
 
-    div {
+    .item {
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      width: 50%;
+      width: 90%;
       margin: 10px auto;
       border-radius: 8px;
       cursor: pointer;
+      display: flex;
+      flex-direction: row;
+      max-height: 70px;
 
-      h3 {
-        font-size: 1rem;
-        font-weight: 500;
-      }
-      p {
-        color: #666666;
-      }
-    }
+      div {
+        text-align: center;
+        margin: auto;
+        h3 {
+          font-size: 1rem;
+          flex: 1;
+        }
 
-    .avatar {
-      width: 150px;
-      height: 150px;
-      margin: 25px auto;
-      overflow: hidden;
-      border-radius: 50%;
-      position: relative;
+        p {
+          font-size: 0.8rem;
+          color: #333;
+        }
+      }
 
       img {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        max-width: 40px;
       }
     }
-  }
-}
-
-@media screen and (max-width: 1100px) {
-  .movie_details {
-    display: grid;
   }
 }

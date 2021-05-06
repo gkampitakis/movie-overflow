@@ -1,16 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { RouteComponentProps, useHistory } from 'react-router-dom';
 import { AiOutlineClockCircle } from 'react-icons/ai';
-import Placeholder from '../../assets/placeholder.jpeg';
 import { MovieDetails } from '../../types';
 import { Loader } from '../../Components';
 import { getMovie } from '../../Api';
+import { avatar, getImage, openImage } from '../../utils';
 import './movieDetails.scss';
-
-const imgSrc = (path: string, width: '185' | '92') =>
-  path ? `https://image.tmdb.org/t/p/w${width}${path}` : Placeholder;
-const openImage = (path: string) =>
-  window.open(`https://image.tmdb.org/t/p/original${path}`, '_blank');
 
 export default function _MovieDetails(
   props: RouteComponentProps<{ id: string }>
@@ -54,7 +49,7 @@ export default function _MovieDetails(
         <>
           <div className="details">
             <header>
-              <h1>{movieDetails.original_title}</h1>
+              <h2>{movieDetails.original_title}</h2>
               <p>
                 {movieDetails.genres.map((genre) => genre.name).join(', ') ||
                   'Unknown'}{' '}
@@ -63,7 +58,7 @@ export default function _MovieDetails(
             </header>
             <article className="overview">
               <img
-                src={imgSrc(movieDetails.poster_path, '185')}
+                src={getImage(movieDetails.poster_path, '185')}
                 alt={movieDetails.original_title}
               />
               <div>
@@ -72,72 +67,82 @@ export default function _MovieDetails(
               </div>
             </article>
             <article className="general">
-              <div className="released">
+              <div>
                 <h3>{movieDetails.status}</h3>
                 <p>{movieDetails.release_date}</p>
               </div>
-              <div className="statistics">
-                <p>Vote: {movieDetails.vote_average} ✨</p>
+              <div>
+                <h3>Vote: </h3>
+                <p>{movieDetails.vote_average} ✨</p>
               </div>
             </article>
             {!!movieDetails.images.posters.length && (
               <>
                 <hr />
-                <h2 className="photos_title">Photos</h2>
+                <h2 className="title">Photos</h2>
                 <article className="photos">
                   {movieDetails.images.posters.slice(0, 7).map((image, idx) => (
                     <img
                       onClick={() => openImage(image.file_path)}
                       key={idx}
-                      src={imgSrc(image.file_path, '92')}
+                      src={getImage(image.file_path, '92')}
                       alt={movieDetails.original_title}
                     />
                   ))}
                 </article>
               </>
             )}
+            {(!!movieDetails.credits.cast.length ||
+              !!movieDetails.credits.cast.length) && (
+              <>
+                <h2 className="title">Credits</h2>
+                <div className="credits">
+                  {movieDetails.credits.cast.map((person) => (
+                    <div
+                      className="item"
+                      onClick={() => goTo(person.id)}
+                      key={person.id}
+                    >
+                      <img
+                        loading="lazy"
+                        src={getImage(
+                          person.profile_path,
+                          '92',
+                          avatar(person.original_name, '92')
+                        )}
+                        alt={person.original_name}
+                      />
+                      <div>
+                        <h3>{person.original_name}</h3>
+                        <p>as {person.character}</p>
+                      </div>
+                    </div>
+                  ))}
+                  {movieDetails.credits.crew.map((person) => (
+                    <div
+                      className="item"
+                      onClick={() => goTo(person.id)}
+                      key={person.id}
+                    >
+                      <img
+                        loading="lazy"
+                        src={getImage(
+                          person.profile_path,
+                          '92',
+                          avatar(person.original_name, '92')
+                        )}
+                        alt={person.original_name}
+                      />
+                      <div>
+                        <h3>{person.original_name}</h3>
+                        <p>{person.job}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </>
+            )}
           </div>
-          {(!!movieDetails.credits.cast.length ||
-            !!movieDetails.credits.cast.length) && (
-            <div className="credits">
-              {!!movieDetails.credits.cast.length && <h2>Cast</h2>}
-              {movieDetails.credits.cast.map((person) => (
-                <div onClick={() => goTo(person.id)} key={person.id}>
-                  <div className="avatar">
-                    <img
-                      loading="lazy"
-                      src={
-                        person.profile_path
-                          ? imgSrc(person.profile_path, '185')
-                          : `https://eu.ui-avatars.com/api/?size=185&name=${person.original_name}`
-                      }
-                      alt={person.original_name}
-                    />
-                  </div>
-                  <h3>{person.original_name}</h3>
-                  <p>as {person.character}</p>
-                </div>
-              ))}
-              {!!movieDetails.credits.crew.length && <h2>Crew</h2>}
-              {movieDetails.credits.crew.map((person) => (
-                <div onClick={() => goTo(person.id)} key={person.id}>
-                  <div className="avatar">
-                    <img
-                      loading="lazy"
-                      src={
-                        person.profile_path
-                          ? imgSrc(person.profile_path, '185')
-                          : `https://eu.ui-avatars.com/api/?size=185&name=${person.original_name}`
-                      }
-                      alt={person.original_name}
-                    />
-                  </div>
-                  <h3>{person.original_name}</h3>
-                  <p>{person.job}</p>
-                </div>
-              ))}
-            </div>
-          )}
         </>
       )}
       <Loader loading={loading} />

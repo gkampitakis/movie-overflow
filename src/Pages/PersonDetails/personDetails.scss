@@ -27,12 +27,6 @@
       border-top-left-radius: 8px;
       border-top-right-radius: 8px;
 
-      h1 {
-        font-size: 1.5rem;
-        letter-spacing: 1px;
-        margin: 5px;
-      }
-
       p {
         margin: 5px;
         font-size: 1rem;
@@ -91,6 +85,7 @@
       cursor: pointer;
       display: flex;
       flex-direction: row;
+      max-height: 70px;
 
       div {
         text-align: center;

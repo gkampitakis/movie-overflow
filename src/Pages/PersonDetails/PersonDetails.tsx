@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { RouteComponentProps, useHistory } from 'react-router-dom';
 import { PersonDetails } from '../../types';
-import Placeholder from '../../assets/placeholder.jpeg';
 import { Loader } from '../../Components';
 import { getPerson } from '../../Api';
 import './personDetails.scss';
-
-const imgSrc = (path: string, width: '185' | '92') =>
-  path ? `https://image.tmdb.org/t/p/w${width}${path}` : Placeholder;
+import { getImage } from '../../utils';
 
 export default function _PersonDetails(
   props: RouteComponentProps<{ id: string }>
@@ -51,12 +48,12 @@ export default function _PersonDetails(
         <>
           <div className="details">
             <header className="person_header">
-              <h1>{personDetails.name}</h1>
+              <h2>{personDetails.name}</h2>
               <p>{personDetails.known_for_department}</p>
             </header>
             <article className="overview">
               <img
-                src={imgSrc(personDetails.profile_path, '185')}
+                src={getImage(personDetails.profile_path, '185')}
                 alt={personDetails.name}
               />
               <div>
@@ -95,7 +92,7 @@ export default function _PersonDetails(
                         onClick={() => goTo(id, media_type)}
                       >
                         <img
-                          src={imgSrc(poster_path, '92')}
+                          src={getImage(poster_path, '92')}
                           alt={name}
                           loading="lazy"
                         />
@@ -116,7 +113,7 @@ export default function _PersonDetails(
                         onClick={() => goTo(id, media_type)}
                       >
                         <img
-                          src={imgSrc(poster_path, '92')}
+                          src={getImage(poster_path, '92')}
                           alt={name}
                           loading="lazy"
                         />

@@ -11,9 +11,9 @@ exports[`TvSeriesDetails Should change selected season 1`] = `
       <header
         class="tv_header"
       >
-        <h1>
+        <h2>
           mockTitle
-        </h1>
+        </h2>
         <p>
           test
         </p>
@@ -86,7 +86,7 @@ exports[`TvSeriesDetails Should change selected season 1`] = `
       </article>
       <hr />
       <h2
-        class="seasons_title"
+        class="title"
       >
         Seasons
       </h2>
@@ -123,48 +123,50 @@ exports[`TvSeriesDetails Should change selected season 1`] = `
           mockOverview2
         </p>
       </article>
-    </div>
-    <div
-      class="credits"
-    >
-      <h2>
-        Cast
+      <h2
+        class="title"
+      >
+        Credits
       </h2>
-      <div>
+      <div
+        class="credits"
+      >
         <div
-          class="avatar"
+          class="item"
         >
           <img
             alt="mockName"
             loading="lazy"
-            src="https://image.tmdb.org/t/p/w185cast_path"
+            src="https://image.tmdb.org/t/p/w92cast_path"
           />
+          <div>
+            <h3>
+              mockName
+            </h3>
+            <p>
+              as 
+              character1
+            </p>
+          </div>
         </div>
-        <h3>
-          mockName
-        </h3>
-        <p>
-          as 
-          character1
-        </p>
-      </div>
-      <div>
         <div
-          class="avatar"
+          class="item"
         >
           <img
             alt="mockName2"
             loading="lazy"
-            src="https://eu.ui-avatars.com/api/?size=185&name=mockName2"
+            src="https://eu.ui-avatars.com/api/?size=92&name=mockName2"
           />
+          <div>
+            <h3>
+              mockName2
+            </h3>
+            <p>
+              as 
+              character2
+            </p>
+          </div>
         </div>
-        <h3>
-          mockName2
-        </h3>
-        <p>
-          as 
-          character2
-        </p>
       </div>
     </div>
   </section>
@@ -182,9 +184,9 @@ exports[`TvSeriesDetails Should load default values 1`] = `
       <header
         class="tv_header"
       >
-        <h1>
+        <h2>
           mockTitle
-        </h1>
+        </h2>
         <p>
           Unknown
         </p>
@@ -257,7 +259,7 @@ exports[`TvSeriesDetails Should load default values 1`] = `
       </article>
       <hr />
       <h2
-        class="seasons_title"
+        class="title"
       >
         Seasons
       </h2>
@@ -294,48 +296,50 @@ exports[`TvSeriesDetails Should load default values 1`] = `
           mockOverview1
         </p>
       </article>
-    </div>
-    <div
-      class="credits"
-    >
-      <h2>
-        Cast
+      <h2
+        class="title"
+      >
+        Credits
       </h2>
-      <div>
+      <div
+        class="credits"
+      >
         <div
-          class="avatar"
+          class="item"
         >
           <img
             alt="mockName"
             loading="lazy"
-            src="https://image.tmdb.org/t/p/w185cast_path"
+            src="https://image.tmdb.org/t/p/w92cast_path"
           />
+          <div>
+            <h3>
+              mockName
+            </h3>
+            <p>
+              as 
+              character1
+            </p>
+          </div>
         </div>
-        <h3>
-          mockName
-        </h3>
-        <p>
-          as 
-          character1
-        </p>
-      </div>
-      <div>
         <div
-          class="avatar"
+          class="item"
         >
           <img
             alt="mockName2"
             loading="lazy"
-            src="https://eu.ui-avatars.com/api/?size=185&name=mockName2"
+            src="https://eu.ui-avatars.com/api/?size=92&name=mockName2"
           />
+          <div>
+            <h3>
+              mockName2
+            </h3>
+            <p>
+              as 
+              character2
+            </p>
+          </div>
         </div>
-        <h3>
-          mockName2
-        </h3>
-        <p>
-          as 
-          character2
-        </p>
       </div>
     </div>
   </section>
@@ -353,9 +357,9 @@ exports[`TvSeriesDetails Should not render credits column if no data 1`] = `
       <header
         class="tv_header"
       >
-        <h1>
+        <h2>
           mockTitle
-        </h1>
+        </h2>
         <p>
           test
         </p>
@@ -428,7 +432,7 @@ exports[`TvSeriesDetails Should not render credits column if no data 1`] = `
       </article>
       <hr />
       <h2
-        class="seasons_title"
+        class="title"
       >
         Seasons
       </h2>
@@ -481,9 +485,9 @@ exports[`TvSeriesDetails Should not try to render crew if no resources are retur
       <header
         class="tv_header"
       >
-        <h1>
+        <h2>
           mockTitle
-        </h1>
+        </h2>
         <p>
           test
         </p>
@@ -556,7 +560,7 @@ exports[`TvSeriesDetails Should not try to render crew if no resources are retur
       </article>
       <hr />
       <h2
-        class="seasons_title"
+        class="title"
       >
         Seasons
       </h2>
@@ -593,48 +597,50 @@ exports[`TvSeriesDetails Should not try to render crew if no resources are retur
           mockOverview1
         </p>
       </article>
-    </div>
-    <div
-      class="credits"
-    >
-      <h2>
-        Cast
+      <h2
+        class="title"
+      >
+        Credits
       </h2>
-      <div>
+      <div
+        class="credits"
+      >
         <div
-          class="avatar"
+          class="item"
         >
           <img
             alt="mockName"
             loading="lazy"
-            src="https://image.tmdb.org/t/p/w185cast_path"
+            src="https://image.tmdb.org/t/p/w92cast_path"
           />
+          <div>
+            <h3>
+              mockName
+            </h3>
+            <p>
+              as 
+              character1
+            </p>
+          </div>
         </div>
-        <h3>
-          mockName
-        </h3>
-        <p>
-          as 
-          character1
-        </p>
-      </div>
-      <div>
         <div
-          class="avatar"
+          class="item"
         >
           <img
             alt="mockName2"
             loading="lazy"
-            src="https://eu.ui-avatars.com/api/?size=185&name=mockName2"
+            src="https://eu.ui-avatars.com/api/?size=92&name=mockName2"
           />
+          <div>
+            <h3>
+              mockName2
+            </h3>
+            <p>
+              as 
+              character2
+            </p>
+          </div>
         </div>
-        <h3>
-          mockName2
-        </h3>
-        <p>
-          as 
-          character2
-        </p>
       </div>
     </div>
   </section>
@@ -652,9 +658,9 @@ exports[`TvSeriesDetails Should render consistently 1`] = `
       <header
         class="tv_header"
       >
-        <h1>
+        <h2>
           mockTitle
-        </h1>
+        </h2>
         <p>
           test
         </p>
@@ -727,7 +733,7 @@ exports[`TvSeriesDetails Should render consistently 1`] = `
       </article>
       <hr />
       <h2
-        class="seasons_title"
+        class="title"
       >
         Seasons
       </h2>
@@ -764,85 +770,84 @@ exports[`TvSeriesDetails Should render consistently 1`] = `
           mockOverview1
         </p>
       </article>
-    </div>
-    <div
-      class="credits"
-    >
-      <h2>
-        Cast
+      <h2
+        class="title"
+      >
+        Credits
       </h2>
-      <div>
+      <div
+        class="credits"
+      >
         <div
-          class="avatar"
+          class="item"
         >
           <img
             alt="mockName"
             loading="lazy"
-            src="https://image.tmdb.org/t/p/w185cast_path"
+            src="https://image.tmdb.org/t/p/w92cast_path"
           />
+          <div>
+            <h3>
+              mockName
+            </h3>
+            <p>
+              as 
+              character1
+            </p>
+          </div>
         </div>
-        <h3>
-          mockName
-        </h3>
-        <p>
-          as 
-          character1
-        </p>
-      </div>
-      <div>
         <div
-          class="avatar"
+          class="item"
         >
           <img
             alt="mockName2"
             loading="lazy"
-            src="https://eu.ui-avatars.com/api/?size=185&name=mockName2"
+            src="https://eu.ui-avatars.com/api/?size=92&name=mockName2"
           />
+          <div>
+            <h3>
+              mockName2
+            </h3>
+            <p>
+              as 
+              character2
+            </p>
+          </div>
         </div>
-        <h3>
-          mockName2
-        </h3>
-        <p>
-          as 
-          character2
-        </p>
-      </div>
-      <h2>
-        Crew
-      </h2>
-      <div>
         <div
-          class="avatar"
+          class="item"
         >
           <img
             alt="crewMockName"
             loading="lazy"
-            src="https://image.tmdb.org/t/p/w185crew_path"
+            src="https://image.tmdb.org/t/p/w92crew_path"
           />
+          <div>
+            <h3>
+              crewMockName
+            </h3>
+            <p>
+              job1
+            </p>
+          </div>
         </div>
-        <h3>
-          crewMockName
-        </h3>
-        <p>
-          job1
-        </p>
-      </div>
-      <div>
         <div
-          class="avatar"
+          class="item"
         >
           <img
             alt="crewMockName2"
             loading="lazy"
-            src="https://eu.ui-avatars.com/api/?size=185&name=crewMockName2"
+            src="https://eu.ui-avatars.com/api/?size=92&name=crewMockName2"
           />
+          <div>
+            <h3>
+              crewMockName2
+            </h3>
+            <p>
+              job2
+            </p>
+          </div>
         </div>
-        <h3>
-          crewMockName2
-        </h3>
-        <p>
-          job2
-        </p>
       </div>
     </div>
   </section>

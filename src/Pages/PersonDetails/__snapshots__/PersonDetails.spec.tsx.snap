@@ -11,9 +11,9 @@ exports[`PersonDetails Should not render credits column if no data 1`] = `
       <header
         class="person_header"
       >
-        <h1>
+        <h2>
           mockName
-        </h1>
+        </h2>
         <p>
           Actor
         </p>
@@ -78,9 +78,9 @@ exports[`PersonDetails Should render consistently 1`] = `
       <header
         class="person_header"
       >
-        <h1>
+        <h2>
           mockName
-        </h1>
+        </h2>
         <p>
           Actor
         </p>
@@ -227,9 +227,9 @@ exports[`PersonDetails Should render placeholder image 1`] = `
       <header
         class="person_header"
       >
-        <h1>
+        <h2>
           mockName
-        </h1>
+        </h2>
         <p>
           Actor
         </p>

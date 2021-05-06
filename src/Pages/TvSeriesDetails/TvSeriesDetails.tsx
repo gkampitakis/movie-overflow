@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { RouteComponentProps, useHistory } from 'react-router-dom';
 import { TvSeriesDetails } from '../../types';
-import Placeholder from '../../assets/placeholder.jpeg';
 import { Loader } from '../../Components';
 import { getTvSeries } from '../../Api';
+import { avatar, getImage } from '../../utils';
 import './tvSeriesDetails.scss';
-
-const imgSrc = (path: string, width: '185' | '92') =>
-  path ? `https://image.tmdb.org/t/p/w${width}${path}` : Placeholder;
 
 export default function _TvSeriesDetails(
   props: RouteComponentProps<{ id: string }>
@@ -53,7 +50,7 @@ export default function _TvSeriesDetails(
         <>
           <div className="details">
             <header className="tv_header">
-              <h1>{tvSeriesDetails.original_name}</h1>
+              <h2>{tvSeriesDetails.original_name}</h2>
               <p>
                 {tvSeriesDetails.genres.map((genre) => genre.name).join(', ') ||
                   'Unknown'}
@@ -61,7 +58,7 @@ export default function _TvSeriesDetails(
             </header>
             <article className="overview">
               <img
-                src={imgSrc(tvSeriesDetails.poster_path, '185')}
+                src={getImage(tvSeriesDetails.poster_path, '185')}
                 alt={tvSeriesDetails.original_name}
               />
               <div>
@@ -101,7 +98,7 @@ export default function _TvSeriesDetails(
             {!!tvSeriesDetails.seasons.length && (
               <>
                 <hr />
-                <h2 className="seasons_title">Seasons</h2>
+                <h2 className="title">Seasons</h2>
                 <article className="seasons">
                   {tvSeriesDetails.seasons.map((season, idx) => (
                     <div
@@ -112,7 +109,7 @@ export default function _TvSeriesDetails(
                       key={season.id}
                     >
                       <img
-                        src={imgSrc(season.poster_path, '92')}
+                        src={getImage(season.poster_path, '92')}
                         alt={season.name}
                       />
                     </div>
@@ -127,48 +124,57 @@ export default function _TvSeriesDetails(
                 </article>
               </>
             )}
+            {(!!tvSeriesDetails.credits.cast.length ||
+              !!tvSeriesDetails.credits.crew.length) && (
+              <>
+                <h2 className="title">Credits</h2>
+                <div className="credits">
+                  {tvSeriesDetails.credits.cast.map((person) => (
+                    <div
+                      className="item"
+                      onClick={() => goTo(person.id)}
+                      key={person.id}
+                    >
+                      <img
+                        loading="lazy"
+                        src={getImage(
+                          person.profile_path,
+                          '92',
+                          avatar(person.original_name, '92')
+                        )}
+                        alt={person.original_name}
+                      />
+                      <div>
+                        <h3>{person.original_name}</h3>
+                        <p>as {person.character}</p>
+                      </div>
+                    </div>
+                  ))}
+                  {tvSeriesDetails.credits.crew.map((person) => (
+                    <div
+                      className="item"
+                      onClick={() => goTo(person.id)}
+                      key={person.id}
+                    >
+                      <img
+                        loading="lazy"
+                        src={getImage(
+                          person.profile_path,
+                          '92',
+                          avatar(person.original_name, '92')
+                        )}
+                        alt={person.original_name}
+                      />
+                      <div>
+                        <h3>{person.original_name}</h3>
+                        <p>{person.job}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </>
+            )}
           </div>
-          {(!!tvSeriesDetails.credits.cast.length ||
-            !!tvSeriesDetails.credits.crew.length) && (
-            <div className="credits">
-              {!!tvSeriesDetails.credits.cast.length && <h2>Cast</h2>}
-              {tvSeriesDetails.credits.cast.map((person) => (
-                <div onClick={() => goTo(person.id)} key={person.id}>
-                  <div className="avatar">
-                    <img
-                      loading="lazy"
-                      src={
-                        person.profile_path
-                          ? imgSrc(person.profile_path, '185')
-                          : `https://eu.ui-avatars.com/api/?size=185&name=${person.original_name}`
-                      }
-                      alt={person.original_name}
-                    />
-                  </div>
-                  <h3>{person.original_name}</h3>
-                  <p>as {person.character}</p>
-                </div>
-              ))}
-              {!!tvSeriesDetails.credits.crew.length && <h2>Crew</h2>}
-              {tvSeriesDetails.credits.crew.map((person) => (
-                <div onClick={() => goTo(person.id)} key={person.id}>
-                  <div className="avatar">
-                    <img
-                      loading="lazy"
-                      src={
-                        person.profile_path
-                          ? imgSrc(person.profile_path, '185')
-                          : `https://eu.ui-avatars.com/api/?size=185&name=${person.original_name}`
-                      }
-                      alt={person.original_name}
-                    />
-                  </div>
-                  <h3>{person.original_name}</h3>
-                  <p>{person.job}</p>
-                </div>
-              ))}
-            </div>
-          )}
         </>
       )}
       <Loader loading={loading} />
