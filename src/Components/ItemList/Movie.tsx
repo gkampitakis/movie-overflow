@@ -1,15 +1,12 @@
 import React from 'react';
 import { Movie } from '../../types';
-import Placeholder from '../../assets/placeholder.jpeg';
-
-const imgSrc = (path: string) =>
-  path ? `https://image.tmdb.org/t/p/w185/${path}` : Placeholder;
+import { getImage } from '../../utils';
 
 export function MovieItem(movie: Movie) {
   return (
     <>
       <img
-        src={imgSrc(movie.poster_path)}
+        src={getImage(movie.poster_path, '185')}
         loading="lazy"
         alt={movie.original_title}
       />

@@ -1,14 +1,15 @@
 import React from 'react';
 import { Series } from '../../types';
-import Placeholder from '../../assets/placeholder.jpeg';
-
-const imgSrc = (path: string) =>
-  path ? `https://image.tmdb.org/t/p/w185/${path}` : Placeholder;
+import { getImage } from '../../utils';
 
 export function TvItem(tv: Series) {
   return (
     <>
-      <img src={imgSrc(tv.poster_path)} loading="lazy" alt={tv.original_name} />
+      <img
+        src={getImage(tv.poster_path, '185')}
+        loading="lazy"
+        alt={tv.original_name}
+      />
       <div className="details">
         <div>
           <div className="header">

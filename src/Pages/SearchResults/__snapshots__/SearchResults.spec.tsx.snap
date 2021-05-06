@@ -15,7 +15,7 @@ exports[`SearchResults Should change page 1`] = `
         <img
           alt="mockTitle"
           loading="lazy"
-          src="https://image.tmdb.org/t/p/w185//post_path"
+          src="https://image.tmdb.org/t/p/w185/post_path"
         />
         <div
           class="details"
@@ -181,7 +181,7 @@ exports[`SearchResults Should render consistently 1`] = `
         <img
           alt="mockTitle"
           loading="lazy"
-          src="https://image.tmdb.org/t/p/w185//post_path"
+          src="https://image.tmdb.org/t/p/w185/post_path"
         />
         <div
           class="details"

@@ -9,7 +9,7 @@ exports[`ItemList Movie item Should render consistently 1`] = `
     <img
       alt="mockTitle"
       loading="lazy"
-      src="https://image.tmdb.org/t/p/w185/mock_path"
+      src="https://image.tmdb.org/t/p/w185mock_path"
     />
     <div
       class="details"
@@ -87,7 +87,7 @@ exports[`ItemList Person item Should render consistently 1`] = `
     <img
       alt="mockName"
       loading="lazy"
-      src="https://image.tmdb.org/t/p/w185/mock_path"
+      src="https://image.tmdb.org/t/p/w185mock_path"
     />
     <div
       class="details"
@@ -165,7 +165,7 @@ exports[`ItemList Tv item Should render consistently 1`] = `
     <img
       alt="mockTitle"
       loading="lazy"
-      src="https://image.tmdb.org/t/p/w185/mock_path"
+      src="https://image.tmdb.org/t/p/w185mock_path"
     />
     <div
       class="details"

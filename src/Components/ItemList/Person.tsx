@@ -1,16 +1,12 @@
 import React from 'react';
 import { Person } from '../../types';
-
-const imgSrc = (path: string, name: string) =>
-  path
-    ? `https://image.tmdb.org/t/p/w185/${path}`
-    : `https://eu.ui-avatars.com/api/?size=185&name=${name}`;
+import { getImage, avatar } from '../../utils';
 
 export function PersonItem(person: Person) {
   return (
     <>
       <img
-        src={imgSrc(person.profile_path, person.name)}
+        src={getImage(person.profile_path, '185', avatar(person.name, '185'))}
         loading="lazy"
         alt={person.name}
       />
